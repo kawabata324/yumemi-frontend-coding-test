@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import { PrefCheckbox } from "@/components/presentational/PrefCheckbox"
+import { PrefCheckbox } from "@/components/presentational/prefCheckbox/PrefCheckbox"
 
 export default {
   title: "@/components/presentational/PrefCheckbox",
@@ -13,7 +13,7 @@ export const UnChecked: Story = {
   args: {
     prefName: "北海道",
     prefCode: 1,
-    checked: false,
+    checkedIdList: [20],
   },
 }
 
@@ -21,6 +21,6 @@ export const Checked: Story = {
   args: {
     prefName: "青森県",
     prefCode: 2,
-    checked: true,
+    checkedIdList: [2, 3],
   },
 }

@@ -95,3 +95,6 @@ export type PrefName =
   | "宮崎県"
   | "鹿児島県"
   | "沖縄県"
+
+export type Pref = { prefName: PrefName; prefCode: PrefCode }
+export type PrefList = Array<{ prefName: PrefName; prefCode: PrefCode }>

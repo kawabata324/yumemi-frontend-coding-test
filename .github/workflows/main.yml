@@ -1,29 +1,28 @@
-name: Next Build
+name: lint-check
 on:
-  pull_request:
-    branches-ignore:
+  push:
+    branches:
       - main
-      - development
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
-
-      - name: setup-node
-        uses: actions/setup-node@v3
-        with:
-          node-version: [16.x]
-          cache: "yarn"
-
-      - name: yarn-install
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
         run: yarn install
-      - name: app-build
-        run: yarn build
-      - name: yarn lint
+      - name: Run lint check
         run: yarn lint
-      - name: yarn tsx
-        run: yarn tsc
-      - name: yarn storybook
-        run: yarn build-storybook
+      - name: Reviewdog
+        uses: reviewdog/action-eslint@v1
+        with:
+          eslint-github-check-bright: true
