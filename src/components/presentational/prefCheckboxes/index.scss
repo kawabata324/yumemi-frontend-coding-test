@@ -1,0 +1,14 @@
+@use "@/styles/global";
+
+.pref_checkboxes--pref_checkboxes {
+  list-style: none;
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  @media screen and (global.$breakpoint-mobile < width <= global.$breakpoint-tablet) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media screen and (width <= global.$breakpoint-mobile) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
