@@ -1,6 +1,6 @@
 import "./index.scss"
 import { FC } from "react"
-import { PrefCode, PrefName } from "@/constants/pref"
+import { PrefCode, PrefName } from "@/types/pref"
 
 type Props = {
   onChange: (prefCode: PrefCode) => void

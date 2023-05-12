@@ -1,7 +1,7 @@
 import "./index.scss"
 import { FC } from "react"
 import { PrefCheckbox } from "@/components/presentational/prefCheckbox/PrefCheckbox"
-import { PrefCode, PrefList } from "@/constants/pref"
+import { PrefCode, PrefList } from "@/types/pref"
 
 type Props = {
   onChange: () => void
