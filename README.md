@@ -30,6 +30,15 @@ yarn prepare
 
 Editor の設定を行う eslint prettier
 
+# Coding rule
+
+css 名が被らないように css のクラス名はにしています。
+ファイル名や directory の切り方も既存のものを参考にすること
+
+```css
+.component_name-class
+```
+
 ## その他
 
 Pref は Preference の略です。県の略称としてこのプロジェクト全体で使用します
