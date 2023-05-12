@@ -1,13 +1,12 @@
 import "./prefCheckbox.css"
 import { FC } from "react"
+import { PrefCode, PrefName } from "@/constants/pref"
 
 type Props = {
-  // TODO: 一旦 number型にしておくが、本来は1~47が入ってくる想定なので実装時に検討する
-  onChange: (prefCode: number) => void
+  onChange: (prefCode: PrefCode) => void
   checked: boolean
-  // TODO: ここも都道府県が入ってくる想定
-  prefName: string
-  prefCode: number
+  prefName: PrefName
+  prefCode: PrefCode
 }
 
 export const PrefCheckbox: FC<Props> = ({ onChange, checked, prefName, prefCode }) => (
