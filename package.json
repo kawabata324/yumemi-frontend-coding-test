@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prepare": "husky install",
     "prettier": "prettier --write .",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006 -s ./src",
     "build-storybook": "storybook build"
   },
   "lint-staged": {
@@ -31,6 +31,7 @@
     "@storybook/addon-essentials": "^7.0.11",
     "@storybook/addon-interactions": "^7.0.11",
     "@storybook/addon-links": "^7.0.11",
+    "@storybook/addon-styling": "^1.0.8",
     "@storybook/addon-viewport": "^7.0.11",
     "@storybook/blocks": "^7.0.11",
     "@storybook/nextjs": "^7.0.11",
@@ -41,6 +42,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "2.8.8",
+    "sass": "^1.62.1",
     "storybook": "^7.0.11"
   }
 }
