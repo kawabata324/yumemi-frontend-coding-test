@@ -1,6 +1,6 @@
 name: Next Build
 on:
-  push:
+  pull_request:
     branches-ignore:
       - main
       - development
@@ -14,10 +14,16 @@ jobs:
       - name: setup-node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.1
+          node-version: [16.x]
+          cache: "yarn"
 
       - name: yarn-install
-        run: yarn
-
+        run: yarn install
       - name: app-build
         run: yarn build
+      - name: yarn lint
+        run: yarn lint
+      - name: yarn tsx
+        run: yarn tsc
+      - name: yarn storybook
+        run: yarn build-storybook
