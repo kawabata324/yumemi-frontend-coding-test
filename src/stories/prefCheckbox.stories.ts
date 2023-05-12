@@ -9,9 +9,18 @@ export default {
 
 type Story = StoryObj<typeof PrefCheckbox>
 
-export const Primary: Story = {
+export const UnChecked: Story = {
   args: {
     prefName: "北海道",
     prefCode: 1,
+    checked: false,
+  },
+}
+
+export const Checked: Story = {
+  args: {
+    prefName: "青森県",
+    prefCode: 2,
+    checked: true,
   },
 }
