@@ -1,4 +1,3 @@
-import "./index.scss"
 import { FC } from "react"
 import { PrefCode, PrefName } from "@/types/pref"
 

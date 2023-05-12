@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import { PrefCheckboxes } from "@/components/presentational/prefCheckboxes/PrefCheckboxes"
+import { PrefCheckboxes } from "@/components/presentational/PrefCheckboxes"
 import { prefListTestData } from "@/test/fixtures/prefListTestData"
 
 export default {

@@ -1,6 +1,5 @@
-import "./index.scss"
 import { FC } from "react"
-import { PrefCheckbox } from "@/components/presentational/prefCheckbox/PrefCheckbox"
+import { PrefCheckbox } from "@/components/presentational/PrefCheckbox"
 import { PrefCode, PrefList } from "@/types/pref"
 
 type Props = {

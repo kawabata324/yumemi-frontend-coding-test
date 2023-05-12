@@ -1,4 +1,5 @@
 import Head from "next/head"
+import { PopulationTrend } from "@/components/container/PopulationTrend"
 
 export default function Home() {
   return (
@@ -6,8 +7,7 @@ export default function Home() {
       <Head>
         <title>Yumemi Front Coding Test</title>
       </Head>
-      <h1>Hello, World!</h1>
-      <p>Reset CSSのテスト</p>
+      <PopulationTrend />
     </>
   )
 }

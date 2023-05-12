@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import { PrefCheckbox } from "@/components/presentational/prefCheckbox/PrefCheckbox"
+import { PrefCheckbox } from "@/components/presentational/PrefCheckbox"
 
 export default {
   title: "@/components/presentational/PrefCheckbox",
