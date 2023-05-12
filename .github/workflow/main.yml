@@ -1,0 +1,23 @@
+name: Next Build
+on:
+  push:
+    branches-ignore:
+      - main
+      - development
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+
+      - name: yarn-install
+        run: yarn
+
+      - name: app-build
+        run: yarn build
