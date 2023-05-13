@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import { PrefCheckboxes } from "@/components/presentational/prefCheckboxes/PrefCheckboxes"
+import { PrefCheckboxes } from "@/components/presentational/PrefCheckboxes"
 import { prefListTestData } from "@/test/fixtures/prefListTestData"
 
 export default {
@@ -14,5 +14,12 @@ export const Primary: Story = {
   args: {
     checkedIdList: [12, 20, 3, 4, 5],
     prefList: prefListTestData,
+  },
+}
+
+export const Empty: Story = {
+  args: {
+    checkedIdList: [],
+    prefList: [],
   },
 }

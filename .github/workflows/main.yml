@@ -22,6 +22,10 @@ jobs:
         run: yarn install
       - name: Run lint check
         run: yarn lint
+      - name: Run tsc
+        run: yarn tsc
+      - name: Run test
+        run: yarn test
       - name: Reviewdog
         uses: reviewdog/action-eslint@v1
         with:

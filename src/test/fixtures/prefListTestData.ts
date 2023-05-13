@@ -1,4 +1,4 @@
-import { PrefList } from "@/constants/pref"
+import { PrefList } from "@/types/pref"
 
 export const prefListTestData: PrefList = [
   {
