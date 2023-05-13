@@ -97,4 +97,5 @@ export type PrefName =
   | "沖縄県"
 
 export type Pref = { prefName: PrefName; prefCode: PrefCode }
-export type PrefList = Array<{ prefName: PrefName; prefCode: PrefCode }>
+export type PrefList = Array<Pref>
+export type PrefCodeList = Array<PrefCode>
