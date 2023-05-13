@@ -1,7 +1,15 @@
 import { PrefCheckboxes } from "@/components/presentational/PrefCheckboxes"
+import { PrefCode, PrefCodeList, PrefList } from "@/types/pref"
+import { FC } from "react"
 
-export const Trend = () => (
+type Props = {
+  prefList: PrefList
+  checkedIdList: PrefCodeList
+  onChangeCheckedList: (prefCode: PrefCode) => void
+}
+
+export const Trend: FC<Props> = ({ prefList, checkedIdList, onChangeCheckedList }) => (
   <div>
-    <PrefCheckboxes onChange={() => {}} checkedIdList={[]} prefList={[]} />
+    <PrefCheckboxes onChangeCheckedList={onChangeCheckedList} checkedIdList={checkedIdList} prefList={prefList} />
   </div>
 )

@@ -1,9 +1,9 @@
 import { FC } from "react"
-import { PrefCode, PrefName } from "@/types/pref"
+import { PrefCode, PrefCodeList, PrefName } from "@/types/pref"
 
 type Props = {
   onChange: (prefCode: PrefCode) => void
-  checkedIdList: PrefCode[]
+  checkedIdList: PrefCodeList
   prefName: PrefName
   prefCode: PrefCode
 }
