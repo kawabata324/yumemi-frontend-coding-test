@@ -1,7 +1,7 @@
 import { CustomHook } from "@/types/customHook"
 import { PrefCode, PrefCodeList, PrefList } from "@/types/pref"
 import { useState } from "react"
-import { usePrefectures } from "@/components/hooks/usePrefectures"
+import { usePrefectures } from "@/components/hooks/api/usePrefectures"
 
 type State = {
   prefList: PrefList
