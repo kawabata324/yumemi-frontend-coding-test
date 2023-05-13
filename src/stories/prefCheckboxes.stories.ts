@@ -16,3 +16,10 @@ export const Primary: Story = {
     prefList: prefListTestData,
   },
 }
+
+export const Empty: Story = {
+  args: {
+    checkedIdList: [],
+    prefList: [],
+  },
+}
