@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const apiKey = process.env.NEXT_PUBLIC_RESAS_API_KEY
-if (!apiKey) {
+if (!apiKey && process.env.NODE_ENV !== "test") {
   throw new Error("REAS_API_KEY is not defined")
 }
 export const resasApi = axios.create({
