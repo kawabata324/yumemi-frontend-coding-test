@@ -1,8 +1,14 @@
 import { PrefList } from "@/types/pref"
 
-export type ResasReponseStatus200<T> = {
+export type ResasResponseStatus200<T> = {
   message: null
   result: T
 }
 
-export type PrefecturesResponse200 = ResasReponseStatus200<PrefList>
+export type PrefecturesResponse200 = ResasResponseStatus200<PrefList>
+
+export type ResasResponseError = {
+  statusCode: string
+  message?: string
+  description?: string
+}
