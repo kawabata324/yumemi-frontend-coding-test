@@ -24,8 +24,6 @@ jobs:
         run: yarn lint
       - name: Run tsc
         run: yarn tsc
-      - name: Run storybook
-        run: yarn storybook
       - name: Run test
         run: yarn test
       - name: Reviewdog
