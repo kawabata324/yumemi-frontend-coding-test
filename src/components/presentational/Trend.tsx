@@ -9,7 +9,7 @@ type Props = {
 }
 
 export const Trend: FC<Props> = ({ prefList, checkedIdList, onChangeCheckedList }) => (
-  <div>
+  <div className="trend--container">
     <PrefCheckboxes onChangeCheckedList={onChangeCheckedList} checkedIdList={checkedIdList} prefList={prefList} />
   </div>
 )
