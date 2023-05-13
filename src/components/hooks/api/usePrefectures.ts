@@ -12,7 +12,7 @@ type State = {
 type Action = {}
 
 export const usePrefectures: CustomHook<State, Action> = () => {
-  const { data } = useSWR<PrefecturesResponse200 | ResasResponseError>("/prefectures", fetcher)
+  const { data } = useSWR<PrefecturesResponse200 | ResasResponseError>("/prefecturess", fetcher)
   const {
     action: { handleResponseError },
   } = useResasError()

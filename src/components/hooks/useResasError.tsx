@@ -1,5 +1,6 @@
 import { ResasResponseError } from "@/types/resas"
 import { CustomHook } from "@/types/customHook"
+import toast from "react-hot-toast"
 
 type State = {}
 
@@ -11,23 +12,23 @@ export const useResasError: CustomHook<State, Action> = () => {
     switch (error.statusCode) {
       case "400":
         console.error("必要なパラメータが正しく設定されていません", detail, error.statusCode)
-        // TODO: 復旧不可能なので管理者に連絡してもらう
+        toast.error("予期せぬエラーが発生しました。開発者にお問い合わせください")
         break
       case "403":
         console.error("APIキーが無効です", detail, error.statusCode)
-        // TODO: 復旧不可能なので管理者に連絡してもらう
+        toast.error("予期せぬエラーが発生しました。開発者にお問い合わせください")
         break
       case "404":
         console.error("指定のURLが存在しません", detail, error.statusCode)
-        // TODO: 復旧不可能なので管理者に連絡してもらう
+        toast.error("予期せぬエラーが発生しました。開発者にお問い合わせください")
         break
       case "429":
         console.error("リクエストが多すぎます", detail, error.statusCode)
-        // TODO: リトライをうながす
+        toast.error("ネットワークエラーが発生しました。Pageの更新をお願いします")
         break
       default:
         console.error("ネットワークエラーです", detail, error.statusCode)
-        // TODO: リトライをうながす
+        toast.error("ネットワークエラーが発生しました。Pageの更新をお願いします")
         break
     }
   }
