@@ -31,6 +31,11 @@ export const usePopulationGraph: CustomHook<State, Action> = (elements: Populati
   const maxPopulation = Math.max(...populationArray)
 
   const generateRandomColorCode = () => {
+    /*
+     * INFO:
+     * 16777216 = 16^6 = 256^3
+     * 0 ~ 16777215 の整数をランダムに生成し、それを16進数に変換する
+     */
     const randomInt = Math.floor(Math.random() * 16777216)
     return "#" + randomInt.toString(16).padStart(6, "0")
   }
