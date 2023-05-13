@@ -26,6 +26,8 @@ jobs:
         run: yarn tsc
       - name: Run storybook build
         run: yarn storybook build
+      - name: Run test
+        run: yarn test
       - name: Reviewdog
         uses: reviewdog/action-eslint@v1
         with:
