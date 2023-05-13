@@ -41,7 +41,7 @@ Editor の設定を行う eslint prettier
 css 名が被らないように css のクラス名はにしています。
 
 ```css
-.component_name-class
+.component_name--class
 ```
 
 ## その他
