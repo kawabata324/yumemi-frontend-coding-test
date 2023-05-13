@@ -8,6 +8,12 @@ Package の Install
 yarn
 ```
 
+環境変数の設定
+
+```bash
+cp .env.example .env.local
+```
+
 開発環境の立ち上げ
 
 ```bash
