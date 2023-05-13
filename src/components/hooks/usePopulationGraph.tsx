@@ -11,10 +11,24 @@ type Action = {
   generateRandomColorCode: () => string
 }
 
+const getYears = (elements: PopulationCompositionGraphElements) => {
+  return elements.map((el) => {
+    return el.data.map((d) => d.year)
+  })[0]
+}
+
+const getPopulation = (elements: PopulationCompositionGraphElements) => {
+  return elements.map((el) => {
+    return el.data.map((d) => d.value)
+  })[0]
+}
+
 export const usePopulationGraph: CustomHook<State, Action> = (elements: PopulationCompositionGraphElements) => {
-  const minYear = Math.min(...elements.map((el) => el.data[0].year))
-  const maxYear = Math.min(...elements.map((el) => el.data[0].year))
-  const maxPopulation = Math.min(...elements.map((el) => el.data[0].value))
+  const yearArray = getYears(elements)
+  const minYear = Math.min(...yearArray)
+  const maxYear = Math.max(...yearArray)
+  const populationArray = getPopulation(elements)
+  const maxPopulation = Math.max(...populationArray)
 
   const generateRandomColorCode = () => {
     const randomInt = Math.floor(Math.random() * 16777216)
