@@ -57,7 +57,7 @@ describe("useViewModel", () => {
     })
     test("老年人口を選んだ場合、老年人口のデータが返ってくること", () => {
       const initialState = {
-        initOrderPopulations: olderPopulationFixture,
+        initOlderPopulations: olderPopulationFixture,
         initSelectedLabel: "総人口",
       }
       const { result } = renderHook(() => useViewModel(initialState))
@@ -74,7 +74,7 @@ describe("useViewModel", () => {
         initTotalPopulations: totalPopulationFixture,
         initWorkingPopulations: workingPopulationFixture,
         initYoungPopulations: youngPopulationFixture,
-        initOrderPopulations: olderPopulationFixture,
+        initOlderPopulations: olderPopulationFixture,
       }
       const { result } = renderHook(() => useViewModel(initialState))
       expect(result.current.state.prefCodeList).toEqual([1])
