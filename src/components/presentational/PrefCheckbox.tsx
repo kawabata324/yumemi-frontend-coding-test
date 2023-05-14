@@ -10,10 +10,11 @@ type Props = {
 
 export const PrefCheckbox: FC<Props> = ({ onChange, checkedIdList, prefName, prefCode }) => {
   const checked = checkedIdList.includes(prefCode)
+  const checkBoxId = `pref_check_box_${prefCode}`
   return (
-    <label htmlFor="pref_check_box" className="pref_checkbox--label">
+    <label htmlFor={checkBoxId} className="pref_checkbox--label">
       <input
-        id="pref_check_box"
+        id={checkBoxId}
         type="checkbox"
         onChange={() => onChange(prefCode)}
         checked={checked}
