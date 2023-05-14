@@ -28,6 +28,14 @@ jobs:
         run: yarn tsc
       - name: Run test
         run: yarn test
+      - name: Istanbul coverage check
+        run: |
+          yarn test:coverage
+          coverage=$(cat coverage/lcov.info | ./node_modules/.bin/coveralls)
+          if [ $(echo "$coverage < 80" | bc -l) -eq 1 ]; then
+            echo "Coverage is below 80% threshold."
+            exit 1
+          fi
       - name: Reviewdog
         uses: reviewdog/action-eslint@v1
         with:
