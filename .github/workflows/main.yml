@@ -29,4 +29,6 @@ jobs:
       - name: Run test
         run: yarn test
       - name: Reviewdog
-        uses: reviewdog/action
+        uses: reviewdog/action-eslint@v1
+        with:
+          eslint-github-check-bright: true
