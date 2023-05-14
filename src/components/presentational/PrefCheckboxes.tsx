@@ -15,10 +15,10 @@ export const PrefCheckboxes: FC<Props> = ({ onChangeCheckedList, checkedIdList, 
       {prefList.map((pref) => (
         <li key={pref.prefCode}>
           <PrefCheckbox
-            onChange={onChangeCheckedList}
             checkedIdList={checkedIdList}
-            prefName={pref.prefName}
+            onChange={onChangeCheckedList}
             prefCode={pref.prefCode}
+            prefName={pref.prefName}
           />
         </li>
       ))}

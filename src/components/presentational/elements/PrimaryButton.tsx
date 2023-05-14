@@ -9,8 +9,8 @@ type Props = {
 export const PrimaryButton: FC<Props> = ({ onClick, label, selected }) => {
   return (
     <button
-      onClick={() => onClick()}
       className={`elements_primary_button--button ${selected && "elements_primary_button--button-selected"}`}
+      onClick={() => onClick()}
     >
       {label}
     </button>
