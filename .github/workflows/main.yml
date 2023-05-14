@@ -1,13 +1,8 @@
 name: lint-check
+
 on:
   push:
-    branches:
-      - main
-      - develop
   pull_request:
-    branches:
-      - main
-      - develop
 
 jobs:
   lint:
@@ -18,6 +13,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
       - name: Install dependencies
         run: yarn install
       - name: Run lint check
@@ -27,6 +29,4 @@ jobs:
       - name: Run test
         run: yarn test
       - name: Reviewdog
-        uses: reviewdog/action-eslint@v1
-        with:
-          eslint-github-check-bright: true
+        uses: reviewdog/action
