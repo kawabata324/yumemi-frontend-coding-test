@@ -12,6 +12,7 @@ const config = {
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   collectCoverage: true,
   coverageDirectory: "coverage",
+  coverageReporters: ["lcov", "text"],
   testEnvironment: "jest-environment-jsdom",
   coveragePathIgnorePatterns: ["src/libs"],
 }
