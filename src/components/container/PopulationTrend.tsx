@@ -8,7 +8,7 @@ export const INITIAL_STATE = {
   initTotalPopulations: [],
   initYoungPopulations: [],
   initWorkingPopulations: [],
-  initOrderPopulations: [],
+  initOlderPopulations: [],
   initPrefCodeList: [],
 }
 export const PopulationTrend: FC = () => {

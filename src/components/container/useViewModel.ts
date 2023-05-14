@@ -17,6 +17,10 @@ type State = {
   prefCodeList: PrefCodeList
   composition: PopulationCompositionGraphElements
   selectedLabel: PopulationCompositionType
+  totalPopulations: PopulationCompositionGraphElements
+  youngPopulations: PopulationCompositionGraphElements
+  workingPopulations: PopulationCompositionGraphElements
+  olderPopulations: PopulationCompositionGraphElements
 }
 
 type Action = {
@@ -29,7 +33,7 @@ export const useViewModel: CustomHook<State, Action> = ({
   initTotalPopulations,
   initYoungPopulations,
   initWorkingPopulations,
-  initOrderPopulations,
+  initOlderPopulations,
   initPrefCodeList,
 }) => {
   const [prefCodeList, setPrefCodeList] = useState<PrefCodeList>(initPrefCodeList)
@@ -38,7 +42,7 @@ export const useViewModel: CustomHook<State, Action> = ({
   const [youngPopulations, setYoungPopulations] = useState<PopulationCompositionGraphElements>(initYoungPopulations)
   const [workingPopulations, setWorkingPopulations] =
     useState<PopulationCompositionGraphElements>(initWorkingPopulations)
-  const [orderPopulations, setOrderPopulations] = useState<PopulationCompositionGraphElements>(initOrderPopulations)
+  const [olderPopulations, setOlderPopulations] = useState<PopulationCompositionGraphElements>(initOlderPopulations)
   const {
     state: { prefList },
   } = usePrefectures()
@@ -64,7 +68,7 @@ export const useViewModel: CustomHook<State, Action> = ({
     setTotalPopulations((prev) => [...prev, totalPopulation])
     setWorkingPopulations((prev) => [...prev, populationByWorking])
     setYoungPopulations((prev) => [...prev, populationByYounger])
-    setOrderPopulations((prev) => [...prev, populationByOlder])
+    setOlderPopulations((prev) => [...prev, populationByOlder])
   }
 
   const setPrefNameToPopulation = (prefCode: PrefCode, population: PopulationCompositionDataList) => {
@@ -83,7 +87,7 @@ export const useViewModel: CustomHook<State, Action> = ({
     setWorkingPopulations((prev) =>
       prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
     )
-    setOrderPopulations((prev) =>
+    setOlderPopulations((prev) =>
       prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
     )
   }
@@ -117,14 +121,23 @@ export const useViewModel: CustomHook<State, Action> = ({
       case POPULATION_BY_WORKING_AGE:
         return workingPopulations
       case POPULATION_BY_OLDER:
-        return orderPopulations
+        return olderPopulations
       default:
         return totalPopulations
     }
   }
 
   return {
-    state: { prefList, prefCodeList, composition: composition(), selectedLabel },
+    state: {
+      prefList,
+      prefCodeList,
+      composition: composition(),
+      selectedLabel,
+      totalPopulations,
+      youngPopulations,
+      workingPopulations,
+      olderPopulations,
+    },
     action: {
       checkPrefecture,
       changeComposition,
