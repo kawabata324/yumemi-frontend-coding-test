@@ -26,14 +26,14 @@ jobs:
         run: yarn lint
       - name: Run tsc
         run: yarn tsc
+      - name: Run test
+        run: yarn test:coverage
       - name: Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           coveralls-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
           path-to-lcov: ./coverage/lcov.info
-      - name: Run test
-        run: yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
       - name: Istanbul coverage check
         run: |
           if [ $(echo "$(cat ./coverage/lcov.info | ./node_modules/.bin/coveralls | cut -d ' ' -f 2) < 80" | bc -l) -eq 1 ]; then
