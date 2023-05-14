@@ -1,15 +1,15 @@
 import useSWR from "swr"
-import { prefectureResponseTest } from "@/test/fixtures/prefectureResponseTest"
+import { prefectureApiFixture } from "@/test/fixtures/prefectureApiFixture"
 import { renderHook } from "@testing-library/react"
 import { usePrefectures } from "@/components/hooks/api/usePrefectures"
-import { resasResponse403Error } from "@/test/fixtures/resusResponseError"
+import { resasResponse403Error } from "@/test/fixtures/resusResponseErrorFixture"
 
 jest.mock("swr")
 describe("usePrefectures", () => {
   test("正常系: データが取得できること", () => {
     const mockUseSWR = useSWR as jest.MockedFunction<typeof useSWR>
     mockUseSWR.mockReturnValue({
-      data: prefectureResponseTest,
+      data: prefectureApiFixture,
       error: undefined,
       mutate: jest.fn(),
       isValidating: false,
@@ -17,7 +17,7 @@ describe("usePrefectures", () => {
     })
 
     const { result } = renderHook(() => usePrefectures())
-    expect(result.current.state.prefList).toEqual(prefectureResponseTest.result)
+    expect(result.current.state.prefList).toEqual(prefectureApiFixture.result)
   })
 
   test("異常系: Errorがあった時データが空になること", () => {
