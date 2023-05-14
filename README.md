@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/kawabata324/yumemi-frontend-coding-test/badge.svg?branch=main)](https://coveralls.io/github/kawabata324/yumemi-frontend-coding-test?branch=main)
+
 # Yumemi Frontend Coding Test
 
 ## ⚡️ Quickstart
