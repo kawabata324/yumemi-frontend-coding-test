@@ -45,5 +45,20 @@ describe("usePopulationComposition", () => {
         populationByOlder: [],
       })
     })
+    it("返ってきた値が予期しない場合、データが取得できないこと", async () => {
+      jest.spyOn(resasApi, "get").mockResolvedValue({
+        data: undefined,
+      })
+      jest.spyOn(console, "error").mockImplementation(() => {})
+
+      const { result } = renderHook(() => usePopulationComposition())
+      const res = await result.current.action.fetchPopulationComposition(13)
+      expect(res).toMatchObject({
+        totalPopulation: [],
+        populationByYounger: [],
+        populationByWorking: [],
+        populationByOlder: [],
+      })
+    })
   })
 })
