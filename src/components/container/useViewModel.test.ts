@@ -66,6 +66,16 @@ describe("useViewModel", () => {
       expect(result.current.state.selectedLabel).toBe("老年人口")
       expect(result.current.state.composition).toEqual(olderPopulationFixture)
     })
+
+    test("存在しないラベルが万が一入った場合、総人口のデータが返ってくること", () => {
+      const initialState = {
+        initTotalPopulations: totalPopulationFixture,
+        initSelectedLabel: "存在しないラベル",
+      }
+      const { result } = renderHook(() => useViewModel(initialState))
+      expect(result.current.state.selectedLabel).toBe("存在しないラベル")
+      expect(result.current.state.composition).toEqual(totalPopulationFixture)
+    })
   })
   describe("checkPrefecture", () => {
     test("既に選択していた場合, 選択が解除されデータもなくなること", async () => {

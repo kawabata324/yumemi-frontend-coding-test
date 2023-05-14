@@ -106,9 +106,6 @@ export const useViewModel: CustomHook<State, Action> = ({
       case POPULATION_BY_OLDER:
         setSelectedLabel(label)
         break
-      default:
-        setSelectedLabel(ALL_POPULATION)
-        break
     }
   }
 
