@@ -88,18 +88,13 @@ export const useViewModel: CustomHook<State, Action> = (
 
   const deletePref = (code: PrefCode) => {
     setPrefCodeList((prev) => prev.filter((pref) => pref !== code))
-    setTotalPopulations((prev) =>
-      prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
-    )
-    setYoungPopulations((prev) =>
-      prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
-    )
-    setWorkingPopulations((prev) =>
-      prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
-    )
-    setOlderPopulations((prev) =>
-      prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
-    )
+    const targetPref = prefList.find((pref) => pref.prefCode === code)
+    if (!targetPref) return
+
+    setTotalPopulations((prev) => prev.filter((pref) => targetPref.prefName))
+    setYoungPopulations((prev) => prev.filter((pref) => targetPref.prefName))
+    setWorkingPopulations((prev) => prev.filter((pref) => targetPref.prefName))
+    setOlderPopulations((prev) => prev.filter((pref) => targetPref.prefName))
   }
 
   const changeComposition = (label: PopulationCompositionType) => {

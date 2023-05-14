@@ -9,6 +9,7 @@ import { prefectureApiFixture } from "@/test/fixtures/prefectureApiFixture"
 import { resasApi } from "@/libs/axios"
 import { populationCompositionApiFixture } from "@/test/fixtures/populationComposition/populationCompositionApiFixture"
 import { resasResponse403Error } from "@/test/fixtures/resusResponseErrorFixture"
+import toast from "react-hot-toast"
 
 jest.mock("swr")
 describe("useViewModel", () => {
@@ -116,7 +117,6 @@ describe("useViewModel", () => {
       jest.spyOn(resasApi, "get").mockResolvedValue({
         data: resasResponse403Error,
       })
-      jest.spyOn(console, "error").mockImplementation(() => {})
       const initialState = {
         initPrefCodeList: [],
         initTotalPopulations: [],
@@ -124,10 +124,15 @@ describe("useViewModel", () => {
         initYoungPopulations: [],
         initOlderPopulations: [],
       }
+      jest.spyOn(console, "error").mockImplementation(() => {})
+
       const { result } = renderHook(() => useViewModel(initialState))
       act(() => result.current.action.checkPrefecture(1))
       expect(result.current.state.prefCodeList).toEqual([])
       expect(result.current.state.totalPopulations).toEqual([])
+      expect(result.current.state.workingPopulations).toEqual([])
+      expect(result.current.state.youngPopulations).toEqual([])
+      expect(result.current.state.olderPopulations).toEqual([])
     })
   })
 })
