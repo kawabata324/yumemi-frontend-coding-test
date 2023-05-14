@@ -52,4 +52,40 @@ $breakpoint-mobile: 640px;
   flex-direction: column;
   align-items: center;
   margin: 16px 16px;
+  gap: 12px;
+}
+
+.trend--button-group {
+  display: flex;
+  gap: 6px;
+}
+
+/*
+ * elements PrimaryButton
+ */
+
+.elements_primary_button--button {
+  background-color: white;
+  border: lightskyblue solid 2px;
+  border-radius: 8px;
+  color: lightskyblue;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 36px;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.elements_primary_button--button-selected {
+  background-color: lightskyblue;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 36px;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
 }
