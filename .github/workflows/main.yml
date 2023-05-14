@@ -7,6 +7,9 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    env:
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+      GIT_HUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
         node-version: [17.x]
@@ -40,10 +43,6 @@ jobs:
             echo "Coverage is below 80% threshold."
             exit 1
           fi
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          coveralls-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          path-to-lcov: ./coverage/lcov.info
       - name: Reviewdog
         uses: reviewdog/action-eslint@v1
         with:
