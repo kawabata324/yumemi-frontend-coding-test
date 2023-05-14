@@ -7,8 +7,6 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    env:
-      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     strategy:
       matrix:
         node-version: [17.x]
@@ -28,6 +26,12 @@ jobs:
         run: yarn lint
       - name: Run tsc
         run: yarn tsc
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coveralls-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          path-to-lcov: ./coverage/lcov.info
       - name: Run test
         run: yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
       - name: Istanbul coverage check
