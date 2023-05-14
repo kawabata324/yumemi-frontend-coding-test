@@ -44,6 +44,28 @@ css 名が被らないように css のクラスは以下のように作って�
 .component_name--class
 ```
 
+## 🧪Test
+
+jest の実行
+
+```bash
+yarn test --coverage
+```
+
+カバレッジレポートを Web で見る
+
+```bash
+ open coverage/lcov-report/index.html
+```
+
+storybook からアクセシビリティの確認
+
+```bash
+yarn storybook
+```
+
+Preview Mode からアクセシビリティの確認
+
 ## その他
 
 「Pref」 は 「Preference」 の略です。
