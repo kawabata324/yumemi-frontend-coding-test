@@ -12,6 +12,10 @@ import { resasResponse403Error } from "@/test/fixtures/resusResponseErrorFixture
 
 describe("usePopulationComposition", () => {
   describe("fetchPopulationComposition", () => {
+    afterEach(() => {
+      jest.clearAllMocks()
+    })
+
     it("正常系: データが取得できること", async () => {
       jest.spyOn(resasApi, "get").mockResolvedValue({
         data: populationCompositionApiFixture,

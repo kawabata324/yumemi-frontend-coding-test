@@ -4,24 +4,33 @@ import { useState } from "react"
 import { usePrefectures } from "@/components/hooks/api/usePrefectures"
 import { usePopulationComposition } from "@/components/hooks/api/usePopulationComposition"
 import { PopulationCompositionGraphElements, PopulationCompositionDataList } from "@/types/populationComposition"
+import {
+  ALL_POPULATION,
+  POPULATION_BY_OLDER,
+  POPULATION_BY_WORKING_AGE,
+  POPULATION_BY_YOUNG,
+  PopulationCompositionType,
+} from "@/constants/populationCompositionType"
 
 type State = {
   prefList: PrefList
   prefCodeList: PrefCodeList
-  compositions: PopulationCompositionGraphElements
+  composition: PopulationCompositionGraphElements
+  selectedLabel: PopulationCompositionType
 }
 
 type Action = {
   checkPrefecture: (prefCode: PrefCode) => void
+  changeComposition: (label: PopulationCompositionType) => void
 }
 
 export const useViewModel: CustomHook<State, Action> = () => {
   const [prefCodeList, setPrefCodeList] = useState<PrefCodeList>([])
+  const [selectedLabel, setSelectedLabel] = useState<PopulationCompositionType>(ALL_POPULATION)
   const [totalPopulations, setTotalPopulations] = useState<PopulationCompositionGraphElements>([])
   const [youngPopulations, setYoungPopulations] = useState<PopulationCompositionGraphElements>([])
   const [workingPopulations, setWorkingPopulations] = useState<PopulationCompositionGraphElements>([])
   const [orderPopulations, setOrderPopulations] = useState<PopulationCompositionGraphElements>([])
-
   const {
     state: { prefList },
   } = usePrefectures()
@@ -31,23 +40,10 @@ export const useViewModel: CustomHook<State, Action> = () => {
 
   const checkPrefecture = async (code: PrefCode) => {
     if (prefCodeList.includes(code)) {
-      setPrefCodeList((prev) => prev.filter((pref) => pref !== code))
-      setTotalPopulations((prev) =>
-        prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
-      )
-      setYoungPopulations((prev) =>
-        prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
-      )
-      setWorkingPopulations((prev) =>
-        prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
-      )
-      setOrderPopulations((prev) =>
-        prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
-      )
+      deletePref(code)
       return
     }
 
-    setPrefCodeList((pref) => [...pref, code])
     const data = await fetchPopulationComposition(code)
 
     if (data.totalPopulation.length === 0) return
@@ -56,6 +52,7 @@ export const useViewModel: CustomHook<State, Action> = () => {
     const populationByWorking = setPrefNameToPopulation(code, data.populationByWorking)
     const populationByOlder = setPrefNameToPopulation(code, data.populationByOlder)
 
+    setPrefCodeList((pref) => [...pref, code])
     setTotalPopulations((prev) => [...prev, totalPopulation])
     setWorkingPopulations((prev) => [...prev, populationByWorking])
     setYoungPopulations((prev) => [...prev, populationByYounger])
@@ -67,10 +64,62 @@ export const useViewModel: CustomHook<State, Action> = () => {
     return { label: prefName, data: population }
   }
 
+  const deletePref = (code: PrefCode) => {
+    setPrefCodeList((prev) => prev.filter((pref) => pref !== code))
+    setTotalPopulations((prev) =>
+      prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
+    )
+    setYoungPopulations((prev) =>
+      prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
+    )
+    setWorkingPopulations((prev) =>
+      prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
+    )
+    setOrderPopulations((prev) =>
+      prev.filter((pref) => pref.label !== prefList.find((pref) => pref.prefCode === code)!.prefName)
+    )
+  }
+
+  const changeComposition = (label: PopulationCompositionType) => {
+    switch (label) {
+      case ALL_POPULATION:
+        setSelectedLabel(label)
+        break
+      case POPULATION_BY_YOUNG:
+        setSelectedLabel(label)
+        break
+      case POPULATION_BY_WORKING_AGE:
+        setSelectedLabel(label)
+        break
+      case POPULATION_BY_OLDER:
+        setSelectedLabel(label)
+        break
+      default:
+        setSelectedLabel(ALL_POPULATION)
+        break
+    }
+  }
+
+  const composition = () => {
+    switch (selectedLabel) {
+      case ALL_POPULATION:
+        return totalPopulations
+      case POPULATION_BY_YOUNG:
+        return youngPopulations
+      case POPULATION_BY_WORKING_AGE:
+        return workingPopulations
+      case POPULATION_BY_OLDER:
+        return orderPopulations
+      default:
+        return totalPopulations
+    }
+  }
+
   return {
-    state: { prefList, prefCodeList, compositions: totalPopulations },
+    state: { prefList, prefCodeList, composition: composition(), selectedLabel },
     action: {
       checkPrefecture,
+      changeComposition,
     },
   }
 }
