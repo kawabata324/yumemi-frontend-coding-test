@@ -8,6 +8,7 @@ import useSWR from "swr"
 import { prefectureApiFixture } from "@/test/fixtures/prefectureApiFixture"
 import { resasApi } from "@/libs/axios"
 import { populationCompositionApiFixture } from "@/test/fixtures/populationComposition/populationCompositionApiFixture"
+import { resasResponse403Error } from "@/test/fixtures/resusResponseErrorFixture"
 
 jest.mock("swr")
 describe("useViewModel", () => {
@@ -110,6 +111,23 @@ describe("useViewModel", () => {
       expect(result.current.state.workingPopulations).not.toEqual([])
       expect(result.current.state.youngPopulations).not.toEqual([])
       expect(result.current.state.olderPopulations).not.toEqual([])
+    })
+    test("異常系: API Errorなどでデータが取れなかった場合", () => {
+      jest.spyOn(resasApi, "get").mockResolvedValue({
+        data: resasResponse403Error,
+      })
+      jest.spyOn(console, "error").mockImplementation(() => {})
+      const initialState = {
+        initPrefCodeList: [],
+        initTotalPopulations: [],
+        initWorkingPopulations: [],
+        initYoungPopulations: [],
+        initOlderPopulations: [],
+      }
+      const { result } = renderHook(() => useViewModel(initialState))
+      act(() => result.current.action.checkPrefecture(1))
+      expect(result.current.state.prefCodeList).toEqual([])
+      expect(result.current.state.totalPopulations).toEqual([])
     })
   })
 })
