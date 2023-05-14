@@ -1,9 +1,9 @@
-import { PrefCode } from "@/types/pref"
-import { PopulationCompositionResponse200, ResasResponseError } from "@/types/resas"
-import { CustomHook } from "@/types/customHook"
 import { useResasError } from "@/components/hooks/api/useResasError"
 import { resasApi } from "@/libs/axios"
+import { CustomHook } from "@/types/customHook"
 import { PopulationCompositionDataList } from "@/types/populationComposition"
+import { PrefCode } from "@/types/pref"
+import { PopulationCompositionResponse200, ResasResponseError } from "@/types/resas"
 
 type State = {}
 

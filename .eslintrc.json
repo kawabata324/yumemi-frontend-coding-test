@@ -1,3 +1,17 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:storybook/recommended", "prettier"]
+  "extends": ["next/core-web-vitals", "plugin:storybook/recommended", "prettier"],
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", ["parent", "sibling"], "object", "type", "index"],
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  }
 }

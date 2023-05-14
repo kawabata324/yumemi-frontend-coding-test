@@ -1,6 +1,7 @@
-import { ResasResponseError } from "@/types/resas"
-import { CustomHook } from "@/types/customHook"
 import toast from "react-hot-toast"
+
+import { CustomHook } from "@/types/customHook"
+import { ResasResponseError } from "@/types/resas"
 
 type State = {}
 

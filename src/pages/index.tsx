@@ -1,4 +1,5 @@
 import Head from "next/head"
+
 import { PopulationTrend } from "@/components/container/PopulationTrend"
 
 export default function Home() {

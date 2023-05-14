@@ -1,9 +1,10 @@
+import useSWR from "swr"
+
+import { useResasError } from "@/components/hooks/api/useResasError"
+import { fetcher } from "@/libs/swr"
 import { CustomHook } from "@/types/customHook"
 import { PrefList } from "@/types/pref"
-import useSWR from "swr"
-import { fetcher } from "@/libs/swr"
 import { PrefecturesResponse200, ResasResponseError } from "@/types/resas"
-import { useResasError } from "@/components/hooks/api/useResasError"
 
 type State = {
   prefList: PrefList

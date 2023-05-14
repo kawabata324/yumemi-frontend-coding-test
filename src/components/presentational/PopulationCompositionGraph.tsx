@@ -1,7 +1,8 @@
 import { FC } from "react"
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
-import { PopulationCompositionGraphElements } from "@/types/populationComposition"
+
 import { usePopulationGraphHelper } from "@/components/hooks/usePopulationGraphHelper"
+import { PopulationCompositionGraphElements } from "@/types/populationComposition"
 
 type Props = {
   elements: PopulationCompositionGraphElements

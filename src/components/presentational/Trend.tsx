@@ -1,9 +1,8 @@
-import { PrefCheckboxes } from "@/components/presentational/PrefCheckboxes"
-import { PrefCode, PrefCodeList, PrefList } from "@/types/pref"
 import { FC } from "react"
-import { PopulationCompositionGraph } from "@/components/presentational/PopulationCompositionGraph"
-import { PopulationCompositionGraphElements } from "@/types/populationComposition"
+
 import { PrimaryButton } from "@/components/presentational/elements/PrimaryButton"
+import { PopulationCompositionGraph } from "@/components/presentational/PopulationCompositionGraph"
+import { PrefCheckboxes } from "@/components/presentational/PrefCheckboxes"
 import {
   ALL_POPULATION,
   POPULATION_BY_OLDER,
@@ -11,6 +10,8 @@ import {
   POPULATION_BY_YOUNG,
   PopulationCompositionType,
 } from "@/constants/populationCompositionType"
+import { PopulationCompositionGraphElements } from "@/types/populationComposition"
+import { PrefCode, PrefCodeList, PrefList } from "@/types/pref"
 
 type Props = {
   prefList: PrefList

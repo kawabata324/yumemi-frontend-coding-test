@@ -1,4 +1,5 @@
 import { FC } from "react"
+
 import { PrefCheckbox } from "@/components/presentational/PrefCheckbox"
 import { PrefCode, PrefCodeList, PrefList } from "@/types/pref"
 

@@ -1,15 +1,15 @@
 import { act, renderHook } from "@testing-library/react"
-import { useViewModel } from "@/components/container/useViewModel"
-import { totalPopulationFixture } from "@/test/fixtures/populationComposition/totalPopulationFixture"
-import { youngPopulationFixture } from "@/test/fixtures/populationComposition/youngPopulationFixture"
-import { workingPopulationFixture } from "@/test/fixtures/populationComposition/workingPopulationFixture"
-import { olderPopulationFixture } from "@/test/fixtures/populationComposition/olderPopulationFixture"
 import useSWR from "swr"
-import { prefectureApiFixture } from "@/test/fixtures/prefectureApiFixture"
+
+import { useViewModel } from "@/components/container/useViewModel"
 import { resasApi } from "@/libs/axios"
+import { olderPopulationFixture } from "@/test/fixtures/populationComposition/olderPopulationFixture"
 import { populationCompositionApiFixture } from "@/test/fixtures/populationComposition/populationCompositionApiFixture"
+import { totalPopulationFixture } from "@/test/fixtures/populationComposition/totalPopulationFixture"
+import { workingPopulationFixture } from "@/test/fixtures/populationComposition/workingPopulationFixture"
+import { youngPopulationFixture } from "@/test/fixtures/populationComposition/youngPopulationFixture"
+import { prefectureApiFixture } from "@/test/fixtures/prefectureApiFixture"
 import { resasResponse403Error } from "@/test/fixtures/resusResponseErrorFixture"
-import toast from "react-hot-toast"
 
 jest.mock("swr")
 describe("useViewModel", () => {

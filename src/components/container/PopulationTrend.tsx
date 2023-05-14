@@ -1,6 +1,7 @@
 import { FC } from "react"
-import { Trend } from "@/components/presentational/Trend"
+
 import { useViewModel } from "@/components/container/useViewModel"
+import { Trend } from "@/components/presentational/Trend"
 export const PopulationTrend: FC = () => {
   const {
     state: { prefList, prefCodeList, composition, selectedLabel },

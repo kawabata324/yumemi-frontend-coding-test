@@ -1,6 +1,7 @@
-import { resasApi } from "@/libs/axios"
 import { renderHook } from "@testing-library/react"
+
 import { usePopulationComposition } from "@/components/hooks/api/usePopulationComposition"
+import { resasApi } from "@/libs/axios"
 import {
   populationByOlderApiFixture,
   populationByWorkingAgeApiFixture,

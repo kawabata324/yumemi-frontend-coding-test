@@ -1,4 +1,5 @@
 import { FC } from "react"
+
 import { PrefCode, PrefCodeList, PrefName } from "@/types/pref"
 
 type Props = {

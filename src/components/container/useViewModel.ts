@@ -1,9 +1,7 @@
-import { CustomHook } from "@/types/customHook"
-import { PrefCode, PrefCodeList, PrefList } from "@/types/pref"
 import { useState } from "react"
-import { usePrefectures } from "@/components/hooks/api/usePrefectures"
+
 import { usePopulationComposition } from "@/components/hooks/api/usePopulationComposition"
-import { PopulationCompositionGraphElements, PopulationCompositionDataList } from "@/types/populationComposition"
+import { usePrefectures } from "@/components/hooks/api/usePrefectures"
 import {
   ALL_POPULATION,
   POPULATION_BY_OLDER,
@@ -11,6 +9,9 @@ import {
   POPULATION_BY_YOUNG,
   PopulationCompositionType,
 } from "@/constants/populationCompositionType"
+import { CustomHook } from "@/types/customHook"
+import { PopulationCompositionGraphElements, PopulationCompositionDataList } from "@/types/populationComposition"
+import { PrefCode, PrefCodeList, PrefList } from "@/types/pref"
 
 type State = {
   prefList: PrefList

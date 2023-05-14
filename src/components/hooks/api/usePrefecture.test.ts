@@ -1,7 +1,8 @@
-import useSWR from "swr"
-import { prefectureApiFixture } from "@/test/fixtures/prefectureApiFixture"
 import { renderHook } from "@testing-library/react"
+import useSWR from "swr"
+
 import { usePrefectures } from "@/components/hooks/api/usePrefectures"
+import { prefectureApiFixture } from "@/test/fixtures/prefectureApiFixture"
 import { resasResponse403Error } from "@/test/fixtures/resusResponseErrorFixture"
 
 jest.mock("swr")

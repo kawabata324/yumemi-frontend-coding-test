@@ -1,4 +1,5 @@
 import { renderHook } from "@testing-library/react"
+
 import { usePopulationGraphHelper } from "@/components/hooks/usePopulationGraphHelper"
 import { totalPopulationFixture } from "@/test/fixtures/populationComposition/totalPopulationFixture"
 
