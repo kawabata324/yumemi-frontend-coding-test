@@ -1,7 +1,7 @@
 import { PrefCode } from "@/types/pref"
 import { PopulationCompositionResponse200, ResasResponseError } from "@/types/resas"
 import { CustomHook } from "@/types/customHook"
-import { useResasError } from "@/components/hooks/useResasError"
+import { useResasError } from "@/components/hooks/api/useResasError"
 import { resasApi } from "@/libs/axios"
 import { PopulationCompositionDataList } from "@/types/populationComposition"
 
