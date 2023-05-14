@@ -24,13 +24,21 @@ type Action = {
   changeComposition: (label: PopulationCompositionType) => void
 }
 
-export const useViewModel: CustomHook<State, Action> = () => {
-  const [prefCodeList, setPrefCodeList] = useState<PrefCodeList>([])
-  const [selectedLabel, setSelectedLabel] = useState<PopulationCompositionType>(ALL_POPULATION)
-  const [totalPopulations, setTotalPopulations] = useState<PopulationCompositionGraphElements>([])
-  const [youngPopulations, setYoungPopulations] = useState<PopulationCompositionGraphElements>([])
-  const [workingPopulations, setWorkingPopulations] = useState<PopulationCompositionGraphElements>([])
-  const [orderPopulations, setOrderPopulations] = useState<PopulationCompositionGraphElements>([])
+export const useViewModel: CustomHook<State, Action> = ({
+  initSelectedLabel,
+  initTotalPopulations,
+  initYoungPopulations,
+  initWorkingPopulations,
+  initOrderPopulations,
+  initPrefCodeList,
+}) => {
+  const [prefCodeList, setPrefCodeList] = useState<PrefCodeList>(initPrefCodeList)
+  const [selectedLabel, setSelectedLabel] = useState<PopulationCompositionType>(initSelectedLabel)
+  const [totalPopulations, setTotalPopulations] = useState<PopulationCompositionGraphElements>(initTotalPopulations)
+  const [youngPopulations, setYoungPopulations] = useState<PopulationCompositionGraphElements>(initYoungPopulations)
+  const [workingPopulations, setWorkingPopulations] =
+    useState<PopulationCompositionGraphElements>(initWorkingPopulations)
+  const [orderPopulations, setOrderPopulations] = useState<PopulationCompositionGraphElements>(initOrderPopulations)
   const {
     state: { prefList },
   } = usePrefectures()
