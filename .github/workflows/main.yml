@@ -40,6 +40,10 @@ jobs:
             echo "Coverage is below 80% threshold."
             exit 1
           fi
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coveralls-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          path-to-lcov: ./coverage/lcov.info
       - name: Reviewdog
         uses: reviewdog/action-eslint@v1
         with:
