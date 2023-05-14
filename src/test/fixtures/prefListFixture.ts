@@ -1,6 +1,6 @@
 import { PrefList } from "@/types/pref"
 
-export const prefListTestData: PrefList = [
+export const prefListFixture: PrefList = [
   {
     prefCode: 1,
     prefName: "北海道",

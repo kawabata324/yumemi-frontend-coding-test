@@ -1,6 +1,6 @@
 import { PopulationCompositionGraphElements } from "@/types/populationComposition"
 
-export const totalPopulationTestData: PopulationCompositionGraphElements = [
+export const totalPopulationFixture: PopulationCompositionGraphElements = [
   {
     label: "埼玉県",
     data: [
