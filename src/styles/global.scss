@@ -65,10 +65,10 @@ $breakpoint-mobile: 640px;
  */
 
 .elements_primary_button--button {
-  background-color: white;
-  border: lightskyblue solid 2px;
+  background-color: #ffffff;
+  border: #0077cc solid 2px;
   border-radius: 8px;
-  color: lightskyblue;
+  color: #0077cc;
   cursor: pointer;
   font-size: 24px;
   line-height: 36px;
@@ -78,10 +78,10 @@ $breakpoint-mobile: 640px;
 }
 
 .elements_primary_button--button-selected {
-  background-color: lightskyblue;
+  background-color: #0077cc;
   border: none;
   border-radius: 8px;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
   font-size: 24px;
   line-height: 36px;
