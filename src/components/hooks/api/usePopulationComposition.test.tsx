@@ -46,19 +46,13 @@ describe("usePopulationComposition", () => {
       })
     })
     it("返ってきた値が予期しない場合、データが取得できないこと", async () => {
-      jest.spyOn(resasApi, "get").mockResolvedValue({
-        data: undefined,
-      })
-      jest.spyOn(console, "error").mockImplementation(() => {})
+      jest.spyOn(resasApi, "get").mockRejectedValueOnce("NetWork Error")
+      const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {})
 
       const { result } = renderHook(() => usePopulationComposition())
       const res = await result.current.action.fetchPopulationComposition(13)
-      expect(res).toMatchObject({
-        totalPopulation: [],
-        populationByYounger: [],
-        populationByWorking: [],
-        populationByOlder: [],
-      })
+      expect(consoleErrorSpy).toHaveBeenCalledWith("NetWork Error", "都道府県の人口構成の取得に失敗しました")
+      expect(res).toBeUndefined()
     })
   })
 })

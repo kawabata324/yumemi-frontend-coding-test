@@ -58,7 +58,7 @@ export const useViewModel: CustomHook<State, Action> = ({
 
     const data = await fetchPopulationComposition(code)
 
-    if (data.totalPopulation.length === 0) return
+    if (data?.totalPopulation.length === 0 || !data) return
     const totalPopulation = setPrefNameToPopulation(code, data.totalPopulation)
     const populationByYounger = setPrefNameToPopulation(code, data.populationByYounger)
     const populationByWorking = setPrefNameToPopulation(code, data.populationByWorking)
