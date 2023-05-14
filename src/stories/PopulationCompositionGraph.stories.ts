@@ -15,9 +15,3 @@ export const Primary: Story = {
     elements: totalPopulationFixture,
   },
 }
-
-export const Empty: Story = {
-  args: {
-    elements: [],
-  },
-}
