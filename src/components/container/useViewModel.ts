@@ -28,14 +28,24 @@ type Action = {
   changeComposition: (label: PopulationCompositionType) => void
 }
 
-export const useViewModel: CustomHook<State, Action> = ({
-  initSelectedLabel,
-  initTotalPopulations,
-  initYoungPopulations,
-  initWorkingPopulations,
-  initOlderPopulations,
-  initPrefCodeList,
-}) => {
+// INFO: テストのために外部から初期値を渡せるようにしている
+export const useViewModel: CustomHook<State, Action> = (
+  {
+    initSelectedLabel,
+    initTotalPopulations,
+    initYoungPopulations,
+    initWorkingPopulations,
+    initOlderPopulations,
+    initPrefCodeList,
+  } = {
+    initSelectedLabel: ALL_POPULATION,
+    initTotalPopulations: [],
+    initYoungPopulations: [],
+    initWorkingPopulations: [],
+    initOlderPopulations: [],
+    initPrefCodeList: [],
+  }
+) => {
   const [prefCodeList, setPrefCodeList] = useState<PrefCodeList>(initPrefCodeList)
   const [selectedLabel, setSelectedLabel] = useState<PopulationCompositionType>(initSelectedLabel)
   const [totalPopulations, setTotalPopulations] = useState<PopulationCompositionGraphElements>(initTotalPopulations)
