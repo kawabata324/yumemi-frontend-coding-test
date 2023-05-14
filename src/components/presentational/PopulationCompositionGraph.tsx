@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 import { PopulationCompositionGraphElements } from "@/types/populationComposition"
-import { usePopulationGraph } from "@/components/hooks/usePopulationGraph"
+import { usePopulationGraphHelper } from "@/components/hooks/usePopulationGraphHelper"
 
 type Props = {
   elements: PopulationCompositionGraphElements
@@ -11,7 +11,7 @@ export const PopulationCompositionGraph: FC<Props> = ({ elements }) => {
   const {
     state: { minYear, maxYear, maxPopulation },
     action: { generateRandomColorCode },
-  } = usePopulationGraph(elements)
+  } = usePopulationGraphHelper(elements)
   return (
     <ResponsiveContainer width="100%" height={600}>
       <LineChart margin={{ top: 10, right: 5, left: 5, bottom: 5 }}>

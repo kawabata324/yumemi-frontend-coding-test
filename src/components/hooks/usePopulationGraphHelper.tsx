@@ -23,7 +23,7 @@ const getPopulation = (elements: PopulationCompositionGraphElements) => {
   })[0]
 }
 
-export const usePopulationGraph: CustomHook<State, Action> = (elements: PopulationCompositionGraphElements) => {
+export const usePopulationGraphHelper: CustomHook<State, Action> = (elements: PopulationCompositionGraphElements) => {
   const yearArray = getYears(elements)
   const minYear = Math.min(...yearArray)
   const maxYear = Math.max(...yearArray)
