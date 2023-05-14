@@ -1,6 +1,12 @@
-## 立ち上げ
+# Yumemi Frontend Coding Test
 
-- 前提条件としてこのリポジトリを clone していること
+## ⚡️ Quickstart
+
+リポジトリをクローン
+
+```bash
+git clone https://github.com/kawabata324/yumemi-frontend-coding-test.git
+```
 
 Package の Install
 
@@ -20,13 +26,7 @@ cp .env.example .env.local
 yarn dev
 ```
 
-**_npm pnpm を極力使わず、yarn で統一する_**
-
-## ディレクトリ構成
-
-Todo:
-
-## 作業前にやること
+## 🧑‍💻Before Task Start
 
 husky の設定を行う
 
@@ -34,11 +34,11 @@ husky の設定を行う
 yarn prepare
 ```
 
-Editor の設定を行う eslint prettier
+eslint と prettier の設定をお使いの Editor で行う
 
-# Coding rule
+# CSS Rule
 
-css 名が被らないように css のクラス名はにしています。
+css 名が被らないように css のクラスは以下のように作ってください
 
 ```css
 .component_name--class
@@ -46,4 +46,5 @@ css 名が被らないように css のクラス名はにしています。
 
 ## その他
 
-Pref は Preference の略です。県の略称としてこのプロジェクト全体で使用します
+「Pref」 は 「Preference」 の略です。
+日本の県の略称としてこのプロジェクト全体で使用します

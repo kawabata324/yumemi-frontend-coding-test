@@ -7,7 +7,7 @@ import {
   resasResponse404Error,
   resasResponse429Error,
   resasResponse500Error,
-} from "@/test/fixtures/resusResponseError"
+} from "@/test/fixtures/resusResponseErrorFixture"
 
 jest.mock("react-hot-toast")
 describe("useResasError", () => {
