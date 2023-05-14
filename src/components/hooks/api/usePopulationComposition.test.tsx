@@ -16,7 +16,7 @@ describe("usePopulationComposition", () => {
       jest.clearAllMocks()
     })
 
-    it("正常系: データが取得できること", async () => {
+    test("正常系: データが取得できること", async () => {
       jest.spyOn(resasApi, "get").mockResolvedValue({
         data: populationCompositionApiFixture,
       })
@@ -30,7 +30,7 @@ describe("usePopulationComposition", () => {
         populationByOlder: populationByOlderApiFixture.data,
       })
     })
-    it("異常系: データが取得できないこと", async () => {
+    test("異常系: データが取得できないこと", async () => {
       jest.spyOn(resasApi, "get").mockResolvedValue({
         data: resasResponse403Error,
       })
@@ -45,7 +45,7 @@ describe("usePopulationComposition", () => {
         populationByOlder: [],
       })
     })
-    it("返ってきた値が予期しない場合、データが取得できないこと", async () => {
+    test("返ってきた値が予期しない場合、データが取得できないこと", async () => {
       jest.spyOn(resasApi, "get").mockRejectedValueOnce("NetWork Error")
       const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {})
 
