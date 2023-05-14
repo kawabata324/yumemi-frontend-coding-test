@@ -24,10 +24,10 @@ export const usePopulationComposition: CustomHook<State, Action> = () => {
   } = useResasError()
 
   const fetchPopulationComposition = async (prefCode: PrefCode): Promise<PopulationComposition> => {
-    // 全ての市町村を選択
+    // 全ての市町村を選択 (-)
     // https://opendata.resas-portal.go.jp/docs/api/v1/population/composition/perYear.html
-    const cityCode = "-"
-    const requestParam = `prefCode=${prefCode}&cityCode=${cityCode}`
+    const CITY_CODE = "-"
+    const requestParam = `prefCode=${prefCode}&cityCode=${CITY_CODE}`
     const { data } = await resasApi.get<PopulationCompositionResponse200 | ResasResponseError>(
       `/population/composition/perYear?${requestParam}`
     )
@@ -40,7 +40,7 @@ export const usePopulationComposition: CustomHook<State, Action> = () => {
         populationByWorking: [],
         populationByOlder: [],
       }
-    } else if (data && "result" in data) {
+    } else if (data && "result" in data && data.result) {
       return {
         totalPopulation: data.result.data[0].data,
         populationByYounger: data.result.data[1].data,
