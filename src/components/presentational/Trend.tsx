@@ -19,7 +19,7 @@ type Props = {
   onChangeCheckedList: (prefCode: PrefCode) => void
   populationComposition: PopulationCompositionGraphElements
   selectedLabel: PopulationCompositionType
-  changeComposition: (label: PopulationCompositionType) => void
+  onChangeComposition: (label: PopulationCompositionType) => void
 }
 
 export const Trend: FC<Props> = ({
@@ -28,7 +28,7 @@ export const Trend: FC<Props> = ({
   onChangeCheckedList,
   populationComposition,
   selectedLabel,
-  changeComposition,
+  onChangeComposition,
 }) => (
   <div className="trend--container">
     <PrefCheckboxes checkedIdList={checkedIdList} onChangeCheckedList={onChangeCheckedList} prefList={prefList} />
@@ -39,22 +39,22 @@ export const Trend: FC<Props> = ({
         <div className="trend--button-group">
           <PrimaryButton
             label={ALL_POPULATION}
-            onClick={() => changeComposition(ALL_POPULATION)}
+            onClick={() => onChangeComposition(ALL_POPULATION)}
             selected={selectedLabel === ALL_POPULATION}
           />
           <PrimaryButton
             label={POPULATION_BY_YOUNG}
-            onClick={() => changeComposition(POPULATION_BY_YOUNG)}
+            onClick={() => onChangeComposition(POPULATION_BY_YOUNG)}
             selected={selectedLabel === POPULATION_BY_YOUNG}
           />
           <PrimaryButton
             label={POPULATION_BY_WORKING_AGE}
-            onClick={() => changeComposition(POPULATION_BY_WORKING_AGE)}
+            onClick={() => onChangeComposition(POPULATION_BY_WORKING_AGE)}
             selected={selectedLabel === POPULATION_BY_WORKING_AGE}
           />
           <PrimaryButton
             label={POPULATION_BY_OLDER}
-            onClick={() => changeComposition(POPULATION_BY_OLDER)}
+            onClick={() => onChangeComposition(POPULATION_BY_OLDER)}
             selected={selectedLabel === POPULATION_BY_OLDER}
           />
         </div>

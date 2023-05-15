@@ -9,9 +9,9 @@ export const PopulationTrend: FC = () => {
   } = useViewModel()
   return (
     <Trend
-      changeComposition={changeComposition}
       checkedIdList={prefCodeList}
       onChangeCheckedList={checkPrefecture}
+      onChangeComposition={changeComposition}
       populationComposition={composition}
       prefList={prefList}
       selectedLabel={selectedLabel}
