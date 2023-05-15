@@ -13,6 +13,16 @@ import { resasResponse403Error } from "@/test/fixtures/resusResponseErrorFixture
 
 jest.mock("swr")
 describe("useViewModel", () => {
+  test("初期値が正しく設定されていること", () => {
+    const { result } = renderHook(() => useViewModel())
+    expect(result.current.state.prefCodeList).toEqual([])
+    expect(result.current.state.composition).toEqual([])
+    expect(result.current.state.selectedLabel).toBe("総人口")
+    expect(result.current.state.totalPopulations).toEqual([])
+    expect(result.current.state.youngPopulations).toEqual([])
+    expect(result.current.state.workingPopulations).toEqual([])
+    expect(result.current.state.olderPopulations).toEqual([])
+  })
   beforeEach(() => {
     const mockUseSWR = useSWR as jest.MockedFunction<typeof useSWR>
     mockUseSWR.mockReturnValue({
