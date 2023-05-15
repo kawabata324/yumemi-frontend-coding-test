@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 
 import { usePopulationComposition } from "@/components/hooks/api/usePopulationComposition"
 import { usePrefectures } from "@/components/hooks/api/usePrefectures"
-import { LoadingContext } from "@/components/hooks/useLoading"
+import { LoadingContext } from "@/components/hooks/helper/useLoadingHelper"
 import {
   TOTAL_POPULATION,
   POPULATION_BY_OLDER,

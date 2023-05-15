@@ -1,11 +1,11 @@
 import Head from "next/head"
 
 import { PopulationTrend } from "@/components/container/PopulationTrend"
-import { LoadingContext, useLoading } from "@/components/hooks/useLoading"
+import { LoadingContext, useLoadingHelper } from "@/components/hooks/helper/useLoadingHelper"
 import { LoadingWithOverlay } from "@/components/presentational/LoadingWithOverlay"
 
 export default function Home() {
-  const { isLoading, setIsLoading } = useLoading()
+  const { isLoading, setIsLoading } = useLoadingHelper()
   return (
     <>
       <Head>

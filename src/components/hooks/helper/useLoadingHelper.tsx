@@ -9,7 +9,7 @@ export const LoadingContext = createContext<LoadingContextType>({
   isLoading: false,
   setIsLoading: () => {},
 })
-export const useLoading = () => {
+export const useLoadingHelper = () => {
   const [isLoading, setIsLoading] = useState(false)
   return { isLoading, setIsLoading }
 }
