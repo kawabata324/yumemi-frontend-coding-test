@@ -10,7 +10,11 @@ import {
   PopulationCompositionType,
 } from "@/constants/populationCompositionType"
 import { CustomHook } from "@/types/customHook"
-import { PopulationCompositionGraphElements, PopulationCompositionDataList } from "@/types/populationComposition"
+import {
+  PopulationCompositionGraphElements,
+  PopulationCompositionDataList,
+  PopulationCompositionGraphElement,
+} from "@/types/populationComposition"
 import { PrefCode, PrefCodeList, PrefList } from "@/types/pref"
 
 type State = {
@@ -77,10 +81,10 @@ export const useViewModel: CustomHook<State, Action> = (
     const data = await fetchPopulationComposition(code)
 
     if (data?.totalPopulation.length === 0 || !data) return
-    const totalPopulation = setPrefNameToPopulation(code, data.totalPopulation)
-    const populationByYounger = setPrefNameToPopulation(code, data.populationByYounger)
-    const populationByWorking = setPrefNameToPopulation(code, data.populationByWorking)
-    const populationByOlder = setPrefNameToPopulation(code, data.populationByOlder)
+    const totalPopulation = convertGraphElement(code, data.totalPopulation)
+    const populationByYounger = convertGraphElement(code, data.populationByYounger)
+    const populationByWorking = convertGraphElement(code, data.populationByWorking)
+    const populationByOlder = convertGraphElement(code, data.populationByOlder)
 
     setPrefCodeList((pref) => [...pref, code])
     setPopulationCompositions((prev) => [
@@ -91,9 +95,12 @@ export const useViewModel: CustomHook<State, Action> = (
     ])
   }
 
-  const setPrefNameToPopulation = (prefCode: PrefCode, population: PopulationCompositionDataList) => {
+  const convertGraphElement = (
+    prefCode: PrefCode,
+    population: PopulationCompositionDataList
+  ): PopulationCompositionGraphElement => {
     const prefName = prefList.find((pref) => pref.prefCode === prefCode)!.prefName
-    return { label: prefName, data: population }
+    return { code: prefCode, label: prefName, data: population }
   }
 
   const deletePref = (code: PrefCode) => {
