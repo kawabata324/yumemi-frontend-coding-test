@@ -1,21 +1,11 @@
 import Head from "next/head"
-import { createContext, useState } from "react"
 
 import { PopulationTrend } from "@/components/container/PopulationTrend"
+import { LoadingContext, useLoading } from "@/components/hooks/useLoading"
 import { LoadingWithOverlay } from "@/components/presentational/LoadingWithOverlay"
 
-type LoadingContextType = {
-  isLoading: boolean
-  setIsLoading: (isLoading: boolean) => void
-}
-
-export const LoadingContext = createContext<LoadingContextType>({
-  isLoading: false,
-  setIsLoading: () => {},
-})
-
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false)
+  const { isLoading, setIsLoading } = useLoading()
   return (
     <>
       <Head>
