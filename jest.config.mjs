@@ -14,7 +14,7 @@ const config = {
   coverageDirectory: "coverage",
   coverageReporters: ["lcov", "text"],
   testEnvironment: "jest-environment-jsdom",
-  coveragePathIgnorePatterns: ["src/libs"],
+  coveragePathIgnorePatterns: ["src/libs", "src/constants"],
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

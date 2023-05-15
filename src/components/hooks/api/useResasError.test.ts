@@ -1,6 +1,7 @@
-import toast from "react-hot-toast"
 import { renderHook } from "@testing-library/react"
-import { useResasError } from "@/components/hooks/useResasError"
+import toast from "react-hot-toast"
+
+import { useResasError } from "@/components/hooks/api/useResasError"
 import {
   resasResponse400Error,
   resasResponse403Error,

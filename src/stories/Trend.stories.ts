@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react"
 
 import { Trend } from "@/components/presentational/Trend"
-import { prefListFixture } from "@/test/fixtures/prefListFixture"
 import { totalPopulationFixture } from "@/test/fixtures/populationComposition/totalPopulationFixture"
+import { prefListFixture } from "@/test/fixtures/prefListFixture"
 
 export default {
   title: "@/components/presentational/Trend",

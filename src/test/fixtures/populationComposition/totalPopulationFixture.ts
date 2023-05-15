@@ -2,6 +2,7 @@ import { PopulationCompositionGraphElements } from "@/types/populationCompositio
 
 export const totalPopulationFixture: PopulationCompositionGraphElements = [
   {
+    code: 11,
     label: "埼玉県",
     data: [
       {
@@ -63,6 +64,7 @@ export const totalPopulationFixture: PopulationCompositionGraphElements = [
     ],
   },
   {
+    code: 34,
     label: "兵庫県",
     data: [
       {

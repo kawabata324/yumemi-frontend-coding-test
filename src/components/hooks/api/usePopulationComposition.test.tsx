@@ -1,6 +1,7 @@
-import { resasApi } from "@/libs/axios"
 import { renderHook } from "@testing-library/react"
+
 import { usePopulationComposition } from "@/components/hooks/api/usePopulationComposition"
+import { resasApi } from "@/libs/axios"
 import {
   populationByOlderApiFixture,
   populationByWorkingAgeApiFixture,
@@ -16,7 +17,7 @@ describe("usePopulationComposition", () => {
       jest.clearAllMocks()
     })
 
-    it("正常系: データが取得できること", async () => {
+    test("正常系: データが取得できること", async () => {
       jest.spyOn(resasApi, "get").mockResolvedValue({
         data: populationCompositionApiFixture,
       })
@@ -30,7 +31,7 @@ describe("usePopulationComposition", () => {
         populationByOlder: populationByOlderApiFixture.data,
       })
     })
-    it("異常系: データが取得できないこと", async () => {
+    test("異常系: データが取得できないこと", async () => {
       jest.spyOn(resasApi, "get").mockResolvedValue({
         data: resasResponse403Error,
       })
@@ -45,20 +46,14 @@ describe("usePopulationComposition", () => {
         populationByOlder: [],
       })
     })
-    it("返ってきた値が予期しない場合、データが取得できないこと", async () => {
-      jest.spyOn(resasApi, "get").mockResolvedValue({
-        data: undefined,
-      })
-      jest.spyOn(console, "error").mockImplementation(() => {})
+    test("返ってきた値が予期しない場合、データが取得できないこと", async () => {
+      jest.spyOn(resasApi, "get").mockRejectedValueOnce("NetWork Error")
+      const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {})
 
       const { result } = renderHook(() => usePopulationComposition())
       const res = await result.current.action.fetchPopulationComposition(13)
-      expect(res).toMatchObject({
-        totalPopulation: [],
-        populationByYounger: [],
-        populationByWorking: [],
-        populationByOlder: [],
-      })
+      expect(consoleErrorSpy).toHaveBeenCalledWith("NetWork Error", "都道府県の人口構成の取得に失敗しました")
+      expect(res).toBeUndefined()
     })
   })
 })

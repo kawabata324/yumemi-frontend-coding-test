@@ -1,29 +1,22 @@
 import { FC } from "react"
-import { Trend } from "@/components/presentational/Trend"
-import { useViewModel } from "@/components/container/useViewModel"
-import { ALL_POPULATION } from "@/constants/populationCompositionType"
 
-export const INITIAL_STATE = {
-  initSelectedLabel: ALL_POPULATION,
-  initTotalPopulations: [],
-  initYoungPopulations: [],
-  initWorkingPopulations: [],
-  initOlderPopulations: [],
-  initPrefCodeList: [],
-}
+import { useViewModel } from "@/components/container/useViewModel"
+import { Trend } from "@/components/presentational/Trend"
+
 export const PopulationTrend: FC = () => {
   const {
     state: { prefList, prefCodeList, composition, selectedLabel },
     action: { checkPrefecture, changeComposition },
-  } = useViewModel(INITIAL_STATE)
+  } = useViewModel()
+
   return (
     <Trend
-      prefList={prefList}
       checkedIdList={prefCodeList}
       onChangeCheckedList={checkPrefecture}
+      onChangeComposition={changeComposition}
       populationComposition={composition}
+      prefList={prefList}
       selectedLabel={selectedLabel}
-      changeComposition={changeComposition}
     />
   )
 }

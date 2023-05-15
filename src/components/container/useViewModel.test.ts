@@ -1,17 +1,28 @@
 import { act, renderHook } from "@testing-library/react"
-import { useViewModel } from "@/components/container/useViewModel"
-import { totalPopulationFixture } from "@/test/fixtures/populationComposition/totalPopulationFixture"
-import { youngPopulationFixture } from "@/test/fixtures/populationComposition/youngPopulationFixture"
-import { workingPopulationFixture } from "@/test/fixtures/populationComposition/workingPopulationFixture"
-import { olderPopulationFixture } from "@/test/fixtures/populationComposition/olderPopulationFixture"
 import useSWR from "swr"
-import { prefectureApiFixture } from "@/test/fixtures/prefectureApiFixture"
+
+import { useViewModel } from "@/components/container/useViewModel"
 import { resasApi } from "@/libs/axios"
+import { olderPopulationFixture } from "@/test/fixtures/populationComposition/olderPopulationFixture"
 import { populationCompositionApiFixture } from "@/test/fixtures/populationComposition/populationCompositionApiFixture"
+import { totalPopulationFixture } from "@/test/fixtures/populationComposition/totalPopulationFixture"
+import { workingPopulationFixture } from "@/test/fixtures/populationComposition/workingPopulationFixture"
+import { youngPopulationFixture } from "@/test/fixtures/populationComposition/youngPopulationFixture"
+import { prefectureApiFixture } from "@/test/fixtures/prefectureApiFixture"
 import { resasResponse403Error } from "@/test/fixtures/resusResponseErrorFixture"
 
 jest.mock("swr")
 describe("useViewModel", () => {
+  test("初期値が正しく設定されていること", () => {
+    const { result } = renderHook(() => useViewModel())
+    expect(result.current.state.prefCodeList).toEqual([])
+    expect(result.current.state.composition).toEqual([])
+    expect(result.current.state.selectedLabel).toBe("総人口")
+    expect(result.current.state.totalPopulations).toEqual([])
+    expect(result.current.state.youngPopulations).toEqual([])
+    expect(result.current.state.workingPopulations).toEqual([])
+    expect(result.current.state.olderPopulations).toEqual([])
+  })
   beforeEach(() => {
     const mockUseSWR = useSWR as jest.MockedFunction<typeof useSWR>
     mockUseSWR.mockReturnValue({
@@ -89,7 +100,7 @@ describe("useViewModel", () => {
       }
       const { result } = renderHook(() => useViewModel(initialState))
       expect(result.current.state.prefCodeList).toEqual([1])
-      await act(async () => await result.current.action.checkPrefecture(1))
+      await act(async () => await result.current.action.checkPrefecture(1, "北海道"))
       expect(result.current.state.prefCodeList).toEqual([])
     })
     test("選択していなかった場合, 選択されデータも追加されること", async () => {
@@ -105,7 +116,7 @@ describe("useViewModel", () => {
       }
       const { result } = renderHook(() => useViewModel(initialState))
       expect(result.current.state.prefCodeList).toEqual([])
-      await act(async () => await result.current.action.checkPrefecture(1))
+      await act(async () => await result.current.action.checkPrefecture(1, "北海道"))
       expect(result.current.state.prefCodeList).toEqual([1])
       expect(result.current.state.totalPopulations).not.toEqual([])
       expect(result.current.state.workingPopulations).not.toEqual([])
@@ -116,7 +127,6 @@ describe("useViewModel", () => {
       jest.spyOn(resasApi, "get").mockResolvedValue({
         data: resasResponse403Error,
       })
-      jest.spyOn(console, "error").mockImplementation(() => {})
       const initialState = {
         initPrefCodeList: [],
         initTotalPopulations: [],
@@ -124,10 +134,15 @@ describe("useViewModel", () => {
         initYoungPopulations: [],
         initOlderPopulations: [],
       }
+      jest.spyOn(console, "error").mockImplementation(() => {})
+
       const { result } = renderHook(() => useViewModel(initialState))
-      act(() => result.current.action.checkPrefecture(1))
+      act(() => result.current.action.checkPrefecture(1, "北海道"))
       expect(result.current.state.prefCodeList).toEqual([])
       expect(result.current.state.totalPopulations).toEqual([])
+      expect(result.current.state.workingPopulations).toEqual([])
+      expect(result.current.state.youngPopulations).toEqual([])
+      expect(result.current.state.olderPopulations).toEqual([])
     })
   })
 })

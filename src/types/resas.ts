@@ -1,5 +1,5 @@
-import { PrefList } from "@/types/pref"
 import { PopulationResponseData } from "@/types/populationComposition"
+import { PrefList } from "@/types/pref"
 
 export type ResasResponseStatus200<T> = {
   message: null
