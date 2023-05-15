@@ -31,11 +31,13 @@ export const Trend: FC<Props> = ({
   onChangeComposition,
 }) => (
   <div className="trend--container">
+    <h2 className="trend_sub--title">都道府県</h2>
     <PrefCheckboxes checkedIdList={checkedIdList} onChangeCheckedList={onChangeCheckedList} prefList={prefList} />
     {populationComposition.length === 0 ? (
       <p>県名を選択してください</p>
     ) : (
       <>
+        <h2 className="trend_sub--title">人口構成</h2>
         <div className="trend--button-group">
           <PrimaryButton
             label={TOTAL_POPULATION}

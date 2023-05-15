@@ -37,10 +37,12 @@ $breakpoint-mobile: 640px;
   }
 }
 
-.pref_checkboxes--title {
-  font-size: 24px;
-  line-height: 36px;
-  margin-bottom: 12px;
+.pref_checkboxes--tabList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px;
 }
 
 /*
@@ -58,6 +60,12 @@ $breakpoint-mobile: 640px;
 .trend--button-group {
   display: flex;
   gap: 6px;
+}
+
+.trend--sub--title {
+  font-size: 24px;
+  line-height: 36px;
+  margin-bottom: 12px;
 }
 
 /*
@@ -105,4 +113,46 @@ $breakpoint-mobile: 640px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/*
+ * TabList
+ */
+
+.tabList--tabList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px;
+}
+
+/*
+ * CustomTab
+ */
+
+.elements_custom_tab--tab {
+  background-color: #ffffff;
+  border: #0077cc solid 2px;
+  border-radius: 8px;
+  color: #0077cc;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 36px;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.elements_custom_tab--selected-tab {
+  background-color: #0077cc;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 36px;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
 }
