@@ -18,7 +18,7 @@ export const PopulationCompositionGraph: FC<Props> = ({ elements }) => {
       <LineChart margin={{ top: 10, right: 5, left: 5, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="year" domain={[minYear, maxYear]} tickSize={20} type="number" />
-        <YAxis dataKey="value" domain={[0, maxPopulation]} width={100} />
+        <YAxis dataKey="value" domain={[0, maxPopulation]} width={90} />
         <Tooltip />
         <Legend height={100} verticalAlign="top" />
         {elements.map((el) => (
