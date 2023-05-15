@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 
 import { usePopulationComposition } from "@/components/hooks/api/usePopulationComposition"
 import { usePrefectures } from "@/components/hooks/api/usePrefectures"
@@ -9,6 +9,7 @@ import {
   POPULATION_BY_YOUNG,
   PopulationCompositionType,
 } from "@/constants/populationCompositionType"
+import { LoadingContext } from "@/pages"
 import { CustomHook } from "@/types/customHook"
 import {
   PopulationCompositionGraphElements,
@@ -57,6 +58,7 @@ export const useViewModel: CustomHook<State, Action> = (
   const {
     action: { fetchPopulationComposition },
   } = usePopulationComposition()
+  const { setIsLoading } = useContext(LoadingContext)
 
   const [prefCodeList, setPrefCodeList] = useState<PrefCodeList>(initPrefCodeList)
   const [selectedLabel, setSelectedLabel] = useState<PopulationCompositionType>(initSelectedLabel)
@@ -73,14 +75,19 @@ export const useViewModel: CustomHook<State, Action> = (
   const olderPopulations = populationCompositions[3]
 
   const checkPrefecture = async (code: PrefCode, name: PrefName) => {
+    setIsLoading(true)
     if (prefCodeList.includes(code)) {
       deletePref(code)
+      setIsLoading(false)
       return
     }
 
     const data = await fetchPopulationComposition(code)
 
-    if (data?.totalPopulation.length === 0 || !data) return
+    if (data?.totalPopulation.length === 0 || !data) {
+      setIsLoading(false)
+      return
+    }
     const totalPopulation = convertGraphElement(code, name, data.totalPopulation)
     const populationByYounger = convertGraphElement(code, name, data.populationByYounger)
     const populationByWorking = convertGraphElement(code, name, data.populationByWorking)
@@ -93,6 +100,7 @@ export const useViewModel: CustomHook<State, Action> = (
       [...prev[2], populationByWorking],
       [...prev[3], populationByOlder],
     ])
+    setIsLoading(false)
   }
 
   const convertGraphElement = (
