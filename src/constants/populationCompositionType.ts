@@ -9,3 +9,9 @@ export type PopulationByWorking = typeof POPULATION_BY_WORKING
 export type PopulationByOlder = typeof POPULATION_BY_OLDER
 
 export type PopulationCompositionType = TotalPopulation | PopulationByYoung | PopulationByWorking | PopulationByOlder
+export const populationCompositionTypes: PopulationCompositionType[] = [
+  TOTAL_POPULATION,
+  POPULATION_BY_YOUNG,
+  POPULATION_BY_WORKING,
+  POPULATION_BY_OLDER,
+]
