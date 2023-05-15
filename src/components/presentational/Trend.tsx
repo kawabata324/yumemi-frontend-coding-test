@@ -4,9 +4,9 @@ import { PrimaryButton } from "@/components/presentational/elements/PrimaryButto
 import { PopulationCompositionGraph } from "@/components/presentational/PopulationCompositionGraph"
 import { PrefCheckboxes } from "@/components/presentational/PrefCheckboxes"
 import {
-  ALL_POPULATION,
+  TOTAL_POPULATION,
   POPULATION_BY_OLDER,
-  POPULATION_BY_WORKING_AGE,
+  POPULATION_BY_WORKING,
   POPULATION_BY_YOUNG,
   PopulationCompositionType,
 } from "@/constants/populationCompositionType"
@@ -38,9 +38,9 @@ export const Trend: FC<Props> = ({
       <>
         <div className="trend--button-group">
           <PrimaryButton
-            label={ALL_POPULATION}
-            onClick={() => onChangeComposition(ALL_POPULATION)}
-            selected={selectedLabel === ALL_POPULATION}
+            label={TOTAL_POPULATION}
+            onClick={() => onChangeComposition(TOTAL_POPULATION)}
+            selected={selectedLabel === TOTAL_POPULATION}
           />
           <PrimaryButton
             label={POPULATION_BY_YOUNG}
@@ -48,9 +48,9 @@ export const Trend: FC<Props> = ({
             selected={selectedLabel === POPULATION_BY_YOUNG}
           />
           <PrimaryButton
-            label={POPULATION_BY_WORKING_AGE}
-            onClick={() => onChangeComposition(POPULATION_BY_WORKING_AGE)}
-            selected={selectedLabel === POPULATION_BY_WORKING_AGE}
+            label={POPULATION_BY_WORKING}
+            onClick={() => onChangeComposition(POPULATION_BY_WORKING)}
+            selected={selectedLabel === POPULATION_BY_WORKING}
           />
           <PrimaryButton
             label={POPULATION_BY_OLDER}

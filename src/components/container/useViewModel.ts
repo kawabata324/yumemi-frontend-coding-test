@@ -4,9 +4,9 @@ import { usePopulationComposition } from "@/components/hooks/api/usePopulationCo
 import { usePrefectures } from "@/components/hooks/api/usePrefectures"
 import { LoadingContext } from "@/components/hooks/useLoading"
 import {
-  ALL_POPULATION,
+  TOTAL_POPULATION,
   POPULATION_BY_OLDER,
-  POPULATION_BY_WORKING_AGE,
+  POPULATION_BY_WORKING,
   POPULATION_BY_YOUNG,
   PopulationCompositionType,
 } from "@/constants/populationCompositionType"
@@ -44,7 +44,7 @@ export const useViewModel: CustomHook<State, Action> = (
     initOlderPopulations,
     initPrefCodeList,
   } = {
-    initSelectedLabel: ALL_POPULATION,
+    initSelectedLabel: TOTAL_POPULATION,
     initTotalPopulations: [],
     initYoungPopulations: [],
     initWorkingPopulations: [],
@@ -123,13 +123,13 @@ export const useViewModel: CustomHook<State, Action> = (
 
   const changeComposition = (label: PopulationCompositionType) => {
     switch (label) {
-      case ALL_POPULATION:
+      case TOTAL_POPULATION:
         setSelectedLabel(label)
         break
       case POPULATION_BY_YOUNG:
         setSelectedLabel(label)
         break
-      case POPULATION_BY_WORKING_AGE:
+      case POPULATION_BY_WORKING:
         setSelectedLabel(label)
         break
       case POPULATION_BY_OLDER:
@@ -140,11 +140,11 @@ export const useViewModel: CustomHook<State, Action> = (
 
   const composition = () => {
     switch (selectedLabel) {
-      case ALL_POPULATION:
+      case TOTAL_POPULATION:
         return totalPopulations
       case POPULATION_BY_YOUNG:
         return youngPopulations
-      case POPULATION_BY_WORKING_AGE:
+      case POPULATION_BY_WORKING:
         return workingPopulations
       case POPULATION_BY_OLDER:
         return olderPopulations
