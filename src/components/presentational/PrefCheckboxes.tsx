@@ -1,10 +1,10 @@
 import { FC } from "react"
 
 import { PrefCheckbox } from "@/components/presentational/PrefCheckbox"
-import { PrefCode, PrefCodeList, PrefList } from "@/types/pref"
+import { PrefCode, PrefCodeList, PrefList, PrefName } from "@/types/pref"
 
 type Props = {
-  onChangeCheckedList: (prefCode: PrefCode) => void
+  onChangeCheckedList: (prefCode: PrefCode, prefName: PrefName) => void
   checkedIdList: PrefCodeList
   prefList: PrefList
 }

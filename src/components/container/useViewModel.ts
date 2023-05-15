@@ -15,7 +15,7 @@ import {
   PopulationCompositionDataList,
   PopulationCompositionGraphElement,
 } from "@/types/populationComposition"
-import { PrefCode, PrefCodeList, PrefList } from "@/types/pref"
+import { PrefCode, PrefCodeList, PrefList, PrefName } from "@/types/pref"
 
 type State = {
   prefList: PrefList
@@ -29,7 +29,7 @@ type State = {
 }
 
 type Action = {
-  checkPrefecture: (prefCode: PrefCode) => void
+  checkPrefecture: (prefCode: PrefCode, prefName: PrefName) => void
   changeComposition: (label: PopulationCompositionType) => void
 }
 
@@ -72,7 +72,7 @@ export const useViewModel: CustomHook<State, Action> = (
   const workingPopulations = populationCompositions[2]
   const olderPopulations = populationCompositions[3]
 
-  const checkPrefecture = async (code: PrefCode) => {
+  const checkPrefecture = async (code: PrefCode, name: PrefName) => {
     if (prefCodeList.includes(code)) {
       deletePref(code)
       return
@@ -81,10 +81,10 @@ export const useViewModel: CustomHook<State, Action> = (
     const data = await fetchPopulationComposition(code)
 
     if (data?.totalPopulation.length === 0 || !data) return
-    const totalPopulation = convertGraphElement(code, data.totalPopulation)
-    const populationByYounger = convertGraphElement(code, data.populationByYounger)
-    const populationByWorking = convertGraphElement(code, data.populationByWorking)
-    const populationByOlder = convertGraphElement(code, data.populationByOlder)
+    const totalPopulation = convertGraphElement(code, name, data.totalPopulation)
+    const populationByYounger = convertGraphElement(code, name, data.populationByYounger)
+    const populationByWorking = convertGraphElement(code, name, data.populationByWorking)
+    const populationByOlder = convertGraphElement(code, name, data.populationByOlder)
 
     setPrefCodeList((pref) => [...pref, code])
     setPopulationCompositions((prev) => [
@@ -97,9 +97,9 @@ export const useViewModel: CustomHook<State, Action> = (
 
   const convertGraphElement = (
     prefCode: PrefCode,
+    prefName: PrefName,
     population: PopulationCompositionDataList
   ): PopulationCompositionGraphElement => {
-    const prefName = prefList.find((pref) => pref.prefCode === prefCode)!.prefName
     return { code: prefCode, label: prefName, data: population }
   }
 

@@ -11,12 +11,12 @@ import {
   PopulationCompositionType,
 } from "@/constants/populationCompositionType"
 import { PopulationCompositionGraphElements } from "@/types/populationComposition"
-import { PrefCode, PrefCodeList, PrefList } from "@/types/pref"
+import { PrefCode, PrefCodeList, PrefList, PrefName } from "@/types/pref"
 
 type Props = {
   prefList: PrefList
   checkedIdList: PrefCodeList
-  onChangeCheckedList: (prefCode: PrefCode) => void
+  onChangeCheckedList: (prefCode: PrefCode, prefName: PrefName) => void
   populationComposition: PopulationCompositionGraphElements
   selectedLabel: PopulationCompositionType
   onChangeComposition: (label: PopulationCompositionType) => void

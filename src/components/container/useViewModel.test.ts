@@ -90,7 +90,7 @@ describe("useViewModel", () => {
       }
       const { result } = renderHook(() => useViewModel(initialState))
       expect(result.current.state.prefCodeList).toEqual([1])
-      await act(async () => await result.current.action.checkPrefecture(1))
+      await act(async () => await result.current.action.checkPrefecture(1, "北海道"))
       expect(result.current.state.prefCodeList).toEqual([])
     })
     test("選択していなかった場合, 選択されデータも追加されること", async () => {
@@ -106,7 +106,7 @@ describe("useViewModel", () => {
       }
       const { result } = renderHook(() => useViewModel(initialState))
       expect(result.current.state.prefCodeList).toEqual([])
-      await act(async () => await result.current.action.checkPrefecture(1))
+      await act(async () => await result.current.action.checkPrefecture(1, "北海道"))
       expect(result.current.state.prefCodeList).toEqual([1])
       expect(result.current.state.totalPopulations).not.toEqual([])
       expect(result.current.state.workingPopulations).not.toEqual([])
@@ -127,7 +127,7 @@ describe("useViewModel", () => {
       jest.spyOn(console, "error").mockImplementation(() => {})
 
       const { result } = renderHook(() => useViewModel(initialState))
-      act(() => result.current.action.checkPrefecture(1))
+      act(() => result.current.action.checkPrefecture(1, "北海道"))
       expect(result.current.state.prefCodeList).toEqual([])
       expect(result.current.state.totalPopulations).toEqual([])
       expect(result.current.state.workingPopulations).toEqual([])
