@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import { CustomTab } from "@/components/presentational/elements/CustomTab"
+import { CustomTab } from "@/components/presentational/CustomTab"
 
 export default {
-  title: "@/components/presentational/elements/CustomTab",
+  title: "@/components/presentational/CustomTab",
   component: CustomTab,
 } satisfies Meta<typeof CustomTab>
 

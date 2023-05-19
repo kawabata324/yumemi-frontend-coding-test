@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from "react"
 
-import { Footer } from "@/components/presentational/elements/Footer"
-import { Header } from "@/components/presentational/elements/Header"
+import { Footer } from "@/components/presentational/Footer"
+import { Header } from "@/components/presentational/Header"
 
 export const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
   return (

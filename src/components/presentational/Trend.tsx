@@ -1,8 +1,8 @@
 import { FC } from "react"
 
-import { PrimaryButton } from "@/components/presentational/elements/PrimaryButton"
 import { PopulationCompositionGraph } from "@/components/presentational/PopulationCompositionGraph"
 import { PrefCheckboxes } from "@/components/presentational/PrefCheckboxes"
+import { PrimaryButton } from "@/components/presentational/PrimaryButton"
 import { PopulationCompositionType, populationCompositionTypes } from "@/constants/populationCompositionType"
 import { PopulationCompositionGraphElements } from "@/types/populationComposition"
 import { PrefCode, PrefCodeList, PrefList, PrefName } from "@/types/pref"

@@ -2,7 +2,7 @@ import { FC } from "react"
 import { TabList, TabPanel, Tabs } from "react-tabs"
 
 import { usePrefectureHelper } from "@/components/hooks/helper/usePrefectureHelper"
-import { CustomTab } from "@/components/presentational/elements/CustomTab"
+import { CustomTab } from "@/components/presentational/CustomTab"
 import { PrefCheckbox } from "@/components/presentational/PrefCheckbox"
 import { PrefCode, PrefCodeList, PrefList, PrefName } from "@/types/pref"
 

@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import { Footer } from "@/components/presentational/elements/Footer"
+import { Footer } from "@/components/presentational/Footer"
 
 export default {
-  title: "@/components/presentational/elements/Footer",
+  title: "@/components/presentational/Footer",
   component: Footer,
 } satisfies Meta<typeof Footer>
 
