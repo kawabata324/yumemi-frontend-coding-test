@@ -35,7 +35,7 @@ type Action = {
 }
 
 // INFO: テストのために外部から初期値を渡せるようにしている
-export const useViewModel: CustomHook<State, Action> = (
+export const usePopulationTrend: CustomHook<State, Action> = (
   {
     initSelectedLabel,
     initTotalPopulations,
