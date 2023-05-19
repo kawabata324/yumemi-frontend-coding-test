@@ -12,7 +12,8 @@
     "storybook": "storybook dev -p 6006 -s ./src",
     "build-storybook": "storybook build",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test-storybook": "test-storybook"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
