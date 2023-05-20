@@ -1,7 +1,7 @@
 import { act, renderHook } from "@testing-library/react"
 import useSWR from "swr"
 
-import { useViewModel } from "@/components/container/useViewModel"
+import { usePopulationTrend } from "@/components/container/usePopulationTrend"
 import { resasApi } from "@/libs/axios"
 import { olderPopulationFixture } from "@/test/fixtures/populationComposition/olderPopulationFixture"
 import { populationCompositionApiFixture } from "@/test/fixtures/populationComposition/populationCompositionApiFixture"
@@ -12,9 +12,9 @@ import { prefectureApiFixture } from "@/test/fixtures/prefectureApiFixture"
 import { resasResponse403Error } from "@/test/fixtures/resusResponseErrorFixture"
 
 jest.mock("swr")
-describe("useViewModel", () => {
+describe("usePopulationTrend", () => {
   test("初期値が正しく設定されていること", () => {
-    const { result } = renderHook(() => useViewModel())
+    const { result } = renderHook(() => usePopulationTrend())
     expect(result.current.state.prefCodeList).toEqual([])
     expect(result.current.state.composition).toEqual([])
     expect(result.current.state.selectedLabel).toBe("総人口")
@@ -39,7 +39,7 @@ describe("useViewModel", () => {
         initTotalPopulations: totalPopulationFixture,
         initSelectedLabel: "年少人口",
       }
-      const { result } = renderHook(() => useViewModel(initialState))
+      const { result } = renderHook(() => usePopulationTrend(initialState))
       expect(result.current.state.selectedLabel).toBe("年少人口")
       act(() => result.current.action.changeComposition("総人口"))
       expect(result.current.state.selectedLabel).toBe("総人口")
@@ -50,7 +50,7 @@ describe("useViewModel", () => {
         initYoungPopulations: youngPopulationFixture,
         initSelectedLabel: "総人口",
       }
-      const { result } = renderHook(() => useViewModel(initialState))
+      const { result } = renderHook(() => usePopulationTrend(initialState))
       expect(result.current.state.selectedLabel).toBe("総人口")
       act(() => result.current.action.changeComposition("年少人口"))
       expect(result.current.state.selectedLabel).toBe("年少人口")
@@ -61,7 +61,7 @@ describe("useViewModel", () => {
         initWorkingPopulations: workingPopulationFixture,
         initSelectedLabel: "総人口",
       }
-      const { result } = renderHook(() => useViewModel(initialState))
+      const { result } = renderHook(() => usePopulationTrend(initialState))
       expect(result.current.state.selectedLabel).toBe("総人口")
       act(() => result.current.action.changeComposition("労働人口"))
       expect(result.current.state.selectedLabel).toBe("労働人口")
@@ -72,7 +72,7 @@ describe("useViewModel", () => {
         initOlderPopulations: olderPopulationFixture,
         initSelectedLabel: "総人口",
       }
-      const { result } = renderHook(() => useViewModel(initialState))
+      const { result } = renderHook(() => usePopulationTrend(initialState))
       expect(result.current.state.selectedLabel).toBe("総人口")
       act(() => result.current.action.changeComposition("老年人口"))
       expect(result.current.state.selectedLabel).toBe("老年人口")
@@ -84,7 +84,7 @@ describe("useViewModel", () => {
         initTotalPopulations: totalPopulationFixture,
         initSelectedLabel: "存在しないラベル",
       }
-      const { result } = renderHook(() => useViewModel(initialState))
+      const { result } = renderHook(() => usePopulationTrend(initialState))
       expect(result.current.state.selectedLabel).toBe("存在しないラベル")
       expect(result.current.state.composition).toEqual(totalPopulationFixture)
     })
@@ -98,7 +98,7 @@ describe("useViewModel", () => {
         initYoungPopulations: youngPopulationFixture,
         initOlderPopulations: olderPopulationFixture,
       }
-      const { result } = renderHook(() => useViewModel(initialState))
+      const { result } = renderHook(() => usePopulationTrend(initialState))
       expect(result.current.state.prefCodeList).toEqual([1])
       await act(async () => await result.current.action.checkPrefecture(1, "北海道"))
       expect(result.current.state.prefCodeList).toEqual([])
@@ -114,7 +114,7 @@ describe("useViewModel", () => {
         initYoungPopulations: [],
         initOlderPopulations: [],
       }
-      const { result } = renderHook(() => useViewModel(initialState))
+      const { result } = renderHook(() => usePopulationTrend(initialState))
       expect(result.current.state.prefCodeList).toEqual([])
       await act(async () => await result.current.action.checkPrefecture(1, "北海道"))
       expect(result.current.state.prefCodeList).toEqual([1])
@@ -136,7 +136,7 @@ describe("useViewModel", () => {
       }
       jest.spyOn(console, "error").mockImplementation(() => {})
 
-      const { result } = renderHook(() => useViewModel(initialState))
+      const { result } = renderHook(() => usePopulationTrend(initialState))
       act(() => result.current.action.checkPrefecture(1, "北海道"))
       expect(result.current.state.prefCodeList).toEqual([])
       expect(result.current.state.totalPopulations).toEqual([])

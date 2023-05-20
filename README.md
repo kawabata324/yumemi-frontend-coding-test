@@ -38,6 +38,43 @@ yarn prepare
 
 eslint と prettier の設定をお使いの Editor で行う
 
+## 👩‍💻Commit Rule
+
+Prefix をつけて commit する
+
+##### 🐛 :bug: バグ修正
+
+##### ✨ :sparkles: 機能追加
+
+##### 🎨 :art: code の構造変更
+
+##### 🚧 :construction: WIP
+
+##### 📝 :memo: 文言修正
+
+##### ♻️ :recycle: リファクタリング
+
+##### 🔥 :fire: 不要な機能・使われなくなった機能の削除
+
+##### 🧪 :test_tube: テストの追加
+
+##### 📦 :package: 依存パッケージなどの Install
+
+##### 🔨 :hammer: config 変更
+
+##### 💄 :lipstick: デザイン変更
+
+例:
+
+```bash
+:lipstick: ログイン画面画面のボタンの幅を18pxに修正
+```
+
+gitmoji を使うと便利です
+
+- https://marketplace.visualstudio.com/items?itemName=seatonjiang.gitmoji-vscode vscode
+- https://plugins.jetbrains.com/plugin/12383-gitmoji-plus-commit-button webstorm
+
 # CSS Rule
 
 css 名が被らないように css のクラスは以下のように作ってください
@@ -68,7 +105,7 @@ yarn storybook
 
 Preview Mode からアクセシビリティの確認
 
-## その他
+## 📚 その他
 
 「Pref」 は 「Preference」 の略です。
 日本の県の略称としてこのプロジェクト全体で使用します

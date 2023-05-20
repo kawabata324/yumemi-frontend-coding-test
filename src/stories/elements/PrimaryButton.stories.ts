@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import { PrimaryButton } from "@/components/presentational/elements/PrimaryButton"
+import { PrimaryButton } from "@/components/presentational/PrimaryButton"
 
 export default {
-  title: "@/components/presentational/elements/PrimaryButton",
+  title: "@/components/presentational/PrimaryButton",
   component: PrimaryButton,
 } satisfies Meta<typeof PrimaryButton>
 

@@ -51,11 +51,13 @@ $breakpoint-mobile: 640px;
   gap: 6px;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .pref_checkbox--input {
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 
 .pref_checkbox--text {
